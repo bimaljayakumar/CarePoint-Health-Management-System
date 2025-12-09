@@ -1,112 +1,33 @@
-# Proprietary Software License
+# PROPRIETARY LICENSE
 
 ## Copyright Notice
 
-**Copyright © 2024 Bimal Jayakumar. All Rights Reserved.**
+© 2024 Bimal Jayakumar. All Rights Reserved.
 
-This software and associated documentation files (the "Software") are the proprietary property of Bimal Jayakumar.
+## Terms
 
----
-
-## License Grant
-
-This is a **DEMONSTRATION VERSION** of the CarePoint Health Management System, provided solely for evaluation and portfolio review purposes.
-
-### Permitted Use
-
-You are granted a limited, non-exclusive, non-transferable, revocable license to:
-
-- View and evaluate the Software's user interface and design
-- Review the code structure for educational purposes
-- Assess the Software for potential purchase consideration
+This is a **DEMONSTRATION VERSION** of the CarePoint Health Management System.
 
 ### Restrictions
 
-You **MAY NOT**:
+1. **NO COMMERCIAL USE** - This software may not be used for commercial purposes
+2. **NO REDISTRIBUTION** - You may not distribute, sublicense, or sell copies of this software
+3. **NO MODIFICATION** - You may not modify, merge, or create derivative works
+4. **DEMO ONLY** - This version is for demonstration and evaluation purposes only
+5. **LIMITED FUNCTIONALITY** - Core features have been intentionally removed
 
-- ❌ Use the Software for any commercial purposes
-- ❌ Distribute, sublicense, sell, or transfer copies of the Software
-- ❌ Modify, adapt, translate, or create derivative works based on the Software
-- ❌ Reverse engineer, decompile, or disassemble the Software
-- ❌ Remove or alter any proprietary notices or labels on the Software
-- ❌ Use the Software in any production environment
-- ❌ Deploy the Software for actual healthcare operations
+### Full Version
 
----
+For access to the complete, fully-functional version of this project:
 
-## Demo Version Limitations
+**Contact:** Bimal Jayakumar  
+**Email:** bimaljayakumar18@gmail.com
 
-This demonstration version has **intentionally limited functionality**:
+### Disclaimer
 
-- Core backend features are non-functional or removed
-- Authentication and security features are disabled
-- Payment processing capabilities are not included
-- Database operations are restricted
-- Email and SMS integrations are not active
-
-**This version is NOT suitable for production use.**
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
 
 ---
 
-## Full Version Availability
-
-### Purchasing the Complete Software
-
-To obtain the fully-functional, production-ready version of CarePoint Health Management System with all features enabled:
-
-**Contact Information:**
-- **Developer:** Bimal Jayakumar
-- **Email:** bimaljayakumar18@gmail.com
-- **GitHub:** [@bimaljayakumar](https://github.com/bimaljayakumar)
-
-### What's Included in Full Version:
-
-- ✅ Complete source code with all features
-- ✅ Full backend implementation
-- ✅ Production-ready configuration
-- ✅ Technical support (30 days)
-- ✅ Updates and bug fixes (6 months)
-- ✅ Deployment assistance
-
----
-
-## Disclaimer of Warranty
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
-
-IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
----
-
-## Limitation of Liability
-
-Under no circumstances shall Bimal Jayakumar be liable for any direct, indirect, incidental, special, consequential, or exemplary damages arising out of the use or inability to use this demonstration version.
-
----
-
-## Termination
-
-This license is effective until terminated. Your rights under this license will terminate automatically without notice if you fail to comply with any of its terms.
-
----
-
-## Governing Law
-
-This license shall be governed by and construed in accordance with applicable laws, without regard to its conflict of law provisions.
-
----
-
-## Contact Information
-
-For licensing inquiries, purchase information, or any questions regarding this Software:
-
-**Bimal Jayakumar**  
-📧 Email: bimaljayakumar18@gmail.com  
-🐙 GitHub: [@bimaljayakumar](https://github.com/bimaljayakumar)  
-💼 LinkedIn: [linkedin.com/in/bimaljayakumar](https://linkedin.com/in/bimaljayakumar)
-
----
-
-**Last Updated:** 2024  
-**Version:** Demo 1.0  
-**License Type:** Proprietary
+**Developer:** Bimal Jayakumar  
+**Email:** bimaljayakumar18@gmail.com
