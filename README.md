@@ -146,7 +146,7 @@ Core backend features including authentication, payment processing, and database
 
 ### Integrations & Libraries
 ```
-- SSLCommerz (Payment Gateway)
+- SSLCommerz (Payment Gateway - Full Version Only)
 - xhtml2pdf (PDF Generation)
 - SMTP (Email Service)
 - Chart.js (Data Visualization)
@@ -197,7 +197,7 @@ CarePoint-Health-Management-System/
 │   ├── forms.py                # Medicine forms
 │   ├── urls.py                 # Pharmacy URL routing
 │   └── migrations/             # Database migrations
-├── sslcommerz/                  # Payment Gateway Module
+├── sslcommerz/                  # Payment Gateway Module (Full Version)
 │   ├── models.py               # Payment transaction models
 │   ├── views.py                # Payment processing
 │   ├── urls.py                 # Payment URL routing
@@ -270,6 +270,8 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+**Note:** This demo version has minimal dependencies. Full version includes additional packages for payment processing, email services, and real-time features.
+
 #### 4. Database Setup
 ```bash
 # Create migrations
@@ -291,42 +293,37 @@ python manage.py runserver
 - **Main Site:** http://127.0.0.1:8000
 - **Admin Panel:** http://127.0.0.1:8000/admin
 
+**⚠️ Demo Limitation:** Most features will display UI only. Backend functionality is not available in this version.
+
 ---
 
 ## ⚙️ Configuration
 
-### Django Settings
+### Django Settings (Demo Version)
 
 **settings.py Configuration:**
 
 ```python
 # Security
-SECRET_KEY = 'your-secret-key'
-DEBUG = True  # Set to False in production
-ALLOWED_HOSTS = ['*']
+SECRET_KEY = 'demo-key-removed'
+DEBUG = False
+ALLOWED_HOSTS = []
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# Database (Demo - No configuration)
+DATABASES = {}
 
-# Email Configuration (Full Version)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# Email Configuration (Removed in Demo)
+# Full version includes SMTP configuration
 
-# Payment Gateway (Full Version)
-STORE_ID = 'your-store-id'
-STORE_PASSWORD = 'your-store-password'
+# Payment Gateway (Removed in Demo)
+# Full version includes SSLCommerz integration
 
 # Static Files
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 ```
+
+**⚠️ Note:** All sensitive configurations have been removed from this demo version. Contact for full version with complete configuration.
 
 ---
 
@@ -404,16 +401,6 @@ MEDIA_URL = '/media/'
   </tr>
 </table>
 
-### 💳 Payment Integration
-
-<div align="center">
-
-![Payment Gateway](screenshots/GooglePay_QR.png)
-
-**Payment Gateway Integration**
-
-</div>
-
 ---
 
 ## ⚠️ Demo Limitations
@@ -430,18 +417,28 @@ MEDIA_URL = '/media/'
 - SMS integration
 - Real-time chat functionality
 - Database operations for critical features
+- All business logic and validations
 
 ❌ **Security Features:**
 - Production-grade encryption
-- Advanced authentication
+- Advanced authentication mechanisms
 - Rate limiting
 - Session management logic
+- API authentication
 
 ❌ **Integration Features:**
-- Payment processing
-- Email delivery
+- Payment processing (SSLCommerz)
+- Email delivery (SMTP)
 - SMS alerts
 - Third-party APIs
+- WebSocket for real-time chat
+
+❌ **Configuration:**
+- Database connection settings
+- Email server configuration
+- Payment gateway credentials
+- Secret keys and tokens
+- Production settings
 
 ### Available Features (Demo Version)
 
@@ -452,12 +449,14 @@ MEDIA_URL = '/media/'
 - Form interfaces
 - Navigation systems
 - Static content display
+- CSS animations and styling
 
-✅ **Basic Backend:**
-- Database models structure
-- URL routing
+✅ **Basic Structure:**
+- Database models structure (no data operations)
+- URL routing (non-functional)
 - Template rendering
 - Static file serving
+- Project architecture
 
 ---
 
@@ -465,48 +464,52 @@ MEDIA_URL = '/media/'
 
 ### Complete Backend Implementation
 - ✅ Fully functional authentication system
-- ✅ Complete appointment management
+- ✅ Complete appointment management with scheduling
 - ✅ Prescription creation and management
 - ✅ Payment gateway integration (SSLCommerz)
 - ✅ PDF generation for prescriptions and reports
-- ✅ Email notification system
+- ✅ Email notification system (SMTP)
 - ✅ SMS alert integration
-- ✅ Real-time chat with WebSocket
-- ✅ Advanced search and filtering
+- ✅ Real-time chat with WebSocket (Django Channels)
+- ✅ Advanced search and filtering algorithms
+- ✅ Complete database operations
 
 ### Production-Ready Features
 - ✅ PostgreSQL database
 - ✅ Redis caching
-- ✅ Celery task queue
-- ✅ AWS S3 storage
+- ✅ Celery task queue for async operations
+- ✅ AWS S3 storage for media files
 - ✅ CDN integration
-- ✅ Load balancing
-- ✅ Auto-scaling
+- ✅ Load balancing configuration
+- ✅ Auto-scaling setup
 
 ### Security Enhancements
 - ✅ SSL/TLS certificates
-- ✅ Advanced encryption
-- ✅ Rate limiting
+- ✅ Advanced encryption for sensitive data
+- ✅ Rate limiting and throttling
 - ✅ DDoS protection
-- ✅ Security auditing
+- ✅ Security auditing and logging
 - ✅ HIPAA compliance features
+- ✅ Two-factor authentication
 
 ### Additional Features
-- ✅ Multi-language support
-- ✅ Mobile app integration
-- ✅ Voice commands
-- ✅ Telemedicine features
-- ✅ Insurance integration
-- ✅ Analytics dashboard
-- ✅ Reporting system
+- ✅ Multi-language support (i18n)
+- ✅ Mobile app integration (REST API)
+- ✅ Voice commands for accessibility
+- ✅ Telemedicine video consultation
+- ✅ Insurance claim integration
+- ✅ Advanced analytics dashboard
+- ✅ Comprehensive reporting system
+- ✅ Automated backup system
 
-### Documentation
+### Documentation & Support
 - ✅ Complete API documentation
-- ✅ Deployment guides
-- ✅ User manuals
-- ✅ Admin guides
+- ✅ Deployment guides (AWS, Heroku, DigitalOcean)
+- ✅ User manuals for all roles
+- ✅ Admin configuration guides
 - ✅ Video tutorials
-- ✅ Technical support
+- ✅ Technical support (30 days)
+- ✅ Bug fixes and updates (6 months)
 
 ---
 
@@ -521,6 +524,8 @@ This is a demonstration version with restricted usage:
 - ❌ No redistribution
 - ❌ No modification
 - ✅ Evaluation purposes only
+
+See [LICENSE](LICENSE) for full terms.
 
 ---
 
@@ -541,22 +546,12 @@ Interested in the complete working project?
 **What You Get:**
 - ✅ Complete source code with all features
 - ✅ Full backend implementation
-- ✅ Production-ready deployment
-- ✅ Complete documentation
+- ✅ Production-ready deployment configuration
+- ✅ Complete documentation and guides
 - ✅ Technical support (30 days)
-- ✅ Future updates (6 months)
-- ✅ Customization options
-- ✅ Deployment assistance
-
-**Payment Methods:**
-
-<div align="center">
-
-![Google Pay](screenshots/GooglePay_QR.png)
-
-*Scan to pay via Google Pay/UPI*
-
-</div>
+- ✅ Free updates and bug fixes (6 months)
+- ✅ Customization assistance
+- ✅ Deployment support
 
 **Contact:** bimaljayakumar18@gmail.com
 
