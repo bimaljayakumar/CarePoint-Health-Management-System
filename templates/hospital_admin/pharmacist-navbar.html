@@ -1,0 +1,98 @@
+{% load static %}
+
+<style>
+.header {
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+}
+.logo {
+    color: black !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    text-decoration: none !important;
+}
+.nav-link, .dropdown-toggle {
+    color: black !important;
+}
+.dropdown-menu {
+    background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    z-index: 9999 !important;
+}
+.dropdown-item {
+    color: black !important;
+    background: transparent !important;
+}
+.dropdown-item:hover {
+    background: rgba(255,255,255,0.1) !important;
+    color: black !important;
+}
+.user-header {
+    background: transparent !important;
+    color: black !important;
+}
+.user-text h6, .user-text p {
+    color: black !important;
+}
+html, body {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+</style>
+		
+    <!-- Logo -->
+    <div class="header-left">
+        <a href="{% url 'pharmacist-dashboard' %}" class="logo" style="display: flex; align-items: center; color: black; font-weight: 800; font-size: 1.5rem; text-decoration: none;">
+            Care Point
+        </a>
+        <a href="{% url 'pharmacist-dashboard' %}" class="logo logo-small">
+            <img src="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" alt="Logo" width="30" height="30">
+        </a>
+    </div>
+    <!-- /Logo -->
+    
+    <a href="javascript:void(0);" id="toggle_btn" style="display: none;">
+        <i class="fe fe-text-align-left"></i>
+    </a>
+    
+    <!-- <div class="top-nav-search">
+        <form>
+            <input type="text" class="form-control" placeholder="Search here">
+            <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div> -->
+    
+    <!-- Mobile Menu Toggle -->
+    <a class="mobile_btn" id="mobile_btn" style="display: none;">
+        <i class="fe fe-text-align-left"></i>
+    </a>
+    <!-- /Mobile Menu Toggle -->
+    
+    <!-- Header Right Menu -->
+    <ul class="nav user-menu">
+
+
+        
+
+        
+        <!-- Logout -->
+        <li class="nav-item">
+            <a href="{% url 'admin-logout' %}" class="nav-link" style="color: black !important;">
+                <i class="fe fe-log-out"></i> Logout
+            </a>
+        </li>
+        <!-- /Logout -->
+        
+    </ul>
+    <!-- /Header Right Menu -->
+    

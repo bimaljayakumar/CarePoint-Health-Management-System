@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+	
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Care Point - Test Cart</title>
+	
+	<!-- Favicons -->
+	<link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}">
+	
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/style.css' %}">
+		
+	<link rel="stylesheet"href="{% static 'HealthStack-System/css/Normal/hospital.css' %}">
+	<link rel="stylesheet"href="{% static 'HealthStack-System/css/Normal/search2.css' %}">
+	<link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\icomoon.css'%}">
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	
+	
+	<style>
+		body {
+			background: rgba(0,0,0,0.3);
+			min-height: 100vh;
+			position: relative;
+		}
+		.header {
+			background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+			backdrop-filter: blur(20px) !important;
+			border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+			box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+		}
+		.breadcrumb-bar {
+			background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+			backdrop-filter: blur(15px);
+			border-radius: 15px;
+			border: 1px solid rgba(255,255,255,0.2);
+			margin: 20px;
+			box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+		}
+		.sidebar-glass {
+			background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+			backdrop-filter: blur(20px);
+			border-radius: 20px;
+			border: 1px solid rgba(255,255,255,0.3);
+			box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+		}
+		.profile-sidebar {
+			background: transparent !important;
+		}
+		.widget-profile, .dashboard-widget {
+			background: rgba(255,255,255,0.1) !important;
+			backdrop-filter: blur(10px) !important;
+			border-radius: 15px !important;
+			border: none !important;
+			margin-bottom: 20px !important;
+		}
+		.profile-sidebar, .profile-sidebar *, .dashboard-menu, .dashboard-menu *, .profile-info-widget, .profile-det-info {
+			border: none !important;
+			outline: none !important;
+		}
+		.cart-list, .cart-wrap, .ftco-section {
+			background: transparent !important;
+		}
+		.table {
+			background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important;
+			backdrop-filter: blur(15px) !important;
+			border-radius: 15px !important;
+			border: 1px solid rgba(255,255,255,0.2) !important;
+		}
+		.cart-total {
+			background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important;
+			backdrop-filter: blur(15px) !important;
+			border-radius: 15px !important;
+			border: 1px solid rgba(255,255,255,0.2) !important;
+			padding: 20px !important;
+		}
+		.breadcrumb {
+			justify-content: center !important;
+		}
+		.breadcrumb-title {
+			text-align: center !important;
+		}
+		* {
+			color: black !important;
+			background-color: transparent !important;
+		}
+		.breadcrumb-item + .breadcrumb-item::before {
+			color: black !important;
+		}
+	</style>
+	
+	</head>
+	<body>
+	<video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+		<source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+	</video>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+			<header class="header">
+
+				{% if user.is_authenticated and user.is_patient %}
+				{% include 'patient_navbar.html' %}
+				{% endif %}
+				
+				{% if user.is_authenticated and user.is_doctor %}
+				{% include 'doctor-navbar.html' %}
+				{% endif %}
+
+			</header>
+			<!-- /Header -->
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-12 text-center">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb" style="justify-content: center;">
+									{% if user.is_authenticated and user.is_patient %}
+									<li class="breadcrumb-item"><a href="{% url 'patient-dashboard' %}">Home</a></li>
+									{% endif %}
+
+									{% if user.is_authenticated and user.is_doctor %}
+									<li class="breadcrumb-item"><a href="{% url 'doctor-dashboard' %}">Home</a></li>
+									{% endif %}
+									<li class="breadcrumb-item active" aria-current="page">Test Cart</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Test Cart</h2>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-5 col-lg-4 col-xl-3">
+							<!-- Profile Sidebar -->
+							<div class="sidebar-glass" style="padding: 20px; position: sticky; top: 100px;">
+								{% if user.is_authenticated and user.is_patient %}
+								{% include 'patient-sidebar.html' %}
+								{% endif %}
+				
+								{% if user.is_authenticated and user.is_doctor %}
+								{% include 'doctor-sidebar.html' %}
+								{% endif %}
+							</div>
+							<!-- /Profile Sidebar -->
+						</div>
+						
+						<div class="col-md-7 col-lg-8 col-xl-9">
+							<div class="glass-card" style="padding: 30px; margin: 20px;">
+								<h1 class="card-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 30px;">Test Cart</h1>
+								
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr class="text-center">
+												<th></th>
+												<th>Test ID</th>
+												<th>Test Name</th>
+												<th>Price</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for test in test_carts %}
+											<tr class="text-center">
+												<td><a href="{% url 'test-remove-cart' pk=test.item_id %}"><span class="icon-close"></span></a></td>
+												<td>{{test.item.test_info_id}}</td>
+												<td>{{test.item.test_name}}</td>
+												<td>₹{{test.item.test_info_price}}</td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+								
+								<div class="cart-total" style="margin: 30px 0; text-align: center;">
+									<h3><b>Cart Totals: </b><span>₹{{ test_order.get_totals }}</span></h3>
+								</div>
+								
+								<div class="text-center">
+									<a href="{% url 'ssl-payment-request-test' pk=test_order.user.patient.patient_id id=test_order.id pk2=prescription_id %}" class="btn btn-primary" style="margin: 10px; padding: 12px 30px;">Proceed to Checkout</a>
+									<a href="" class="btn btn-info" style="margin: 10px; padding: 12px 30px;">Back to Prescription</a>
+								</div>
+																</div>
+						</div>
+					</div>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+   
+			<!-- Footer -->
+			{% include 'footer.html' %}
+			<!-- /Footer -->
+		   
+		</div>
+		<!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+		<script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+        <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+
+		<!-- Searchbar JS -->
+		<script src="{% static 'HealthStack-System/js/Normal/sidebar.js' %}"></script>
+		
+	</body>
+
+<!-- doccure/change-password.html  30 Nov 2019 04:12:18 GMT -->
+</html>

@@ -1,0 +1,84 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#pre-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0000009c;
+}
+
+.bg-none {
+    background: unset !important;
+}
+
+.footer {
+    background-color: #000000 !important;
+}
+
+.footer * {
+    color: #ffffff !important;
+}
+
+.footer .footer-menu {
+    list-style: disc !important;
+    padding-left: 20px !important;
+}
+
+.footer .footer-menu li a {
+    white-space: nowrap !important;
+    transition: all 0.3s ease !important;
+}
+
+.footer .footer-menu li a:hover {
+    color: #09e5ab !important;
+    padding-left: 10px !important;
+    transform: translateX(5px) !important;
+}
+
+.footer .social-icon ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+}
+
+.footer a:hover {
+    color: #09e5ab !important;
+}
+
+.footer p:hover {
+    color: #09e5ab !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.footer-contact-info p:hover {
+    color: #09e5ab !important;
+    transform: translateX(5px) !important;
+    transition: all 0.3s ease !important;
+}
+
+.doctor-card div[style*="position: absolute"] {
+    display: none !important;
+}
+
+.speciality-card div[style*="height: 150px"] {
+    border-radius: 50% !important;
+    width: 120px !important;
+    height: 120px !important;
+    margin: 15px auto !important;
+}
+
+.speciality-card img {
+    border-radius: 50% !important;
+    width: 60px !important;
+    height: 60px !important;
+}

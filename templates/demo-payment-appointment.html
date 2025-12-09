@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Care Point - Secure Payment</title>
+  <link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: black;
+    }
+    
+    .glass-navbar {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(50px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .breadcrumb-glass {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 20px;
+      margin: 30px;
+    }
+    
+    .payment-container {
+      max-width: 95%;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .payment-header {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(15px);
+      color: black;
+      padding: 25px 30px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .payment-header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .order-summary {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 25px 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .payment-methods {
+      padding: 30px;
+    }
+    
+    .method-card {
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .method-card:hover {
+      border-color: #007bff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,123,255,0.15);
+    }
+    
+    .method-card.active {
+      border-color: #007bff;
+      background: linear-gradient(135deg, #e7f3ff 0%, #f0f8ff 100%);
+      box-shadow: 0 8px 25px rgba(0,123,255,0.2);
+    }
+    
+    .method-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      margin-right: 20px;
+      box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+    }
+    
+    .payment-form {
+      display: none;
+      margin-top: 25px;
+      padding: 25px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .payment-form.active {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+    
+    .form-control:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(0,123,255,0.1);
+      transform: translateY(-1px);
+    }
+    
+    .btn-pay {
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      border: none;
+      padding: 18px 30px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+    }
+    
+    .btn-pay:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(40,167,69,0.4);
+    }
+    
+    .btn-pay:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .security-badge {
+      background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 25px;
+      border: 1px solid #c3e6cb;
+      display: flex;
+      align-items: center;
+    }
+    
+    .security-icon {
+      width: 40px;
+      height: 40px;
+      background: #28a745;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-right: 15px;
+    }
+    
+    .trust-indicators {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .trust-item {
+      text-align: center;
+      color: #6c757d;
+      font-size: 12px;
+    }
+    
+    .trust-item i {
+      font-size: 20px;
+      color: #28a745;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+    <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+  </video>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-glass">
+    <div class="row">
+      <div class="col-sm-12" style="text-align: center;">
+        <h2 style="color: black; font-weight: 800; font-size: 2rem; margin: 0;">Secure Payment Gateway</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Container -->
+  <div class="container" style="padding-bottom: 50px;">
+    <div class="payment-container">
+      <!-- Payment Header -->
+      <div class="payment-header">
+        <div class="payment-header-content">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 style="margin: 0; font-weight: 600;">Complete Your Payment</h4>
+              <p style="margin: 5px 0; opacity: 0.9;">Secure & encrypted payment processing</p>
+            </div>
+            <div class="col-md-4 text-right">
+              <div style="display: flex; align-items: center; justify-content: flex-end;">
+                <i class="fas fa-shield-alt" style="font-size: 20px; margin-right: 8px;"></i>
+                <span style="font-size: 14px;">SSL Secured</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h5 style="margin: 0; color: black; font-weight: 600;">Appointment Payment</h5>
+            <p style="margin: 5px 0; color: black;">Dr. {{appointment.doctor.name}} - {{appointment.doctor.department_name}}</p>
+            <small style="color: black;">Appointment ID: #AP{{appointment_id}}{{patient_id}}</small>
+          </div>
+          <div class="col-md-4 text-right">
+            <h3 style="margin: 0; color: black; font-weight: 700;">₹{{total_amount}}</h3>
+            <small style="color: black;">{{fee_type}}</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Methods -->
+      <div class="payment-methods">
+        <h5 style="margin-bottom: 25px; color: #333; font-weight: 600;">Choose Payment Method</h5>
+        
+        <!-- UPI Payment -->
+        <div class="method-card" id="upi-card" onclick="selectMethod('upi')">
+          <div class="method-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div style="flex: 1;">
+            <h6 style="margin: 0; color: black; font-weight: 600;">UPI Payment</h6>
+            <p style="margin: 5px 0; color: black; font-size: 14px;">Pay instantly using GPay, PhonePe, Paytm, BHIM UPI</p>
+            <div style="display: flex; gap: 10px; margin-top: 8px;">
+              <span style="background: #e9ecef; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: black;">GPay</span>
+              <span style="background: #e9ecef; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: black;">PhonePe</span>
+              <span style="background: #e9ecef; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: black;">Paytm</span>
+            </div>
+          </div>
+          <div style="color: black; font-weight: 600;">Instant</div>
+        </div>
+
+        <!-- Card Payment -->
+        <div class="method-card" id="card-card" onclick="selectMethod('card')">
+          <div class="method-icon">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <div style="flex: 1;">
+            <h6 style="margin: 0; color: black; font-weight: 600;">Debit/Credit Card</h6>
+            <p style="margin: 5px 0; color: black; font-size: 14px;">Secure payment with Visa, Mastercard, Rupay</p>
+            <div style="display: flex; gap: 10px; margin-top: 8px;">
+              <span style="background: #e9ecef; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: black;">Visa</span>
+              <span style="background: #e9ecef; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: black;">Mastercard</span>
+              <span style="background: #e9ecef; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: black;">Rupay</span>
+            </div>
+          </div>
+          <div style="color: black; font-weight: 600;">Secure</div>
+        </div>
+
+        <!-- UPI Form -->
+        <div class="payment-form" id="upi-form">
+          <h6 style="color: #333; margin-bottom: 20px; font-weight: 600;">Enter UPI Details</h6>
+          <form onsubmit="processPayment(event, 'UPI')">
+            <div class="form-group">
+              <label style="font-weight: 500; color: #495057;">UPI ID</label>
+              <input type="text" class="form-control" placeholder="yourname@paytm" required>
+            </div>
+            <div class="form-group">
+              <label style="font-weight: 500; color: #495057;">Mobile Number</label>
+              <input type="tel" class="form-control" placeholder="Enter registered mobile number" required>
+            </div>
+            <button type="submit" class="btn-pay">
+              <i class="fas fa-lock" style="margin-right: 8px;"></i>
+              Pay ₹{{total_amount}} Securely
+            </button>
+          </form>
+        </div>
+
+        <!-- Card Form -->
+        <div class="payment-form" id="card-form">
+          <h6 style="color: #333; margin-bottom: 20px; font-weight: 600;">Enter Card Details</h6>
+          <form onsubmit="processPayment(event, 'Card')">
+            <div class="form-group">
+              <label style="font-weight: 500; color: #495057;">Card Number</label>
+              <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label style="font-weight: 500; color: #495057;">Expiry Date</label>
+                  <input type="text" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label style="font-weight: 500; color: #495057;">CVV</label>
+                  <input type="text" class="form-control" placeholder="123" maxlength="3" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label style="font-weight: 500; color: #495057;">Cardholder Name</label>
+              <input type="text" class="form-control" placeholder="Enter name as on card" required>
+            </div>
+            <button type="submit" class="btn-pay">
+              <i class="fas fa-lock" style="margin-right: 8px;"></i>
+              Pay ₹{{total_amount}} Securely
+            </button>
+          </form>
+        </div>
+
+        <!-- Security Badge -->
+        <div class="security-badge">
+          <div class="security-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div>
+            <h6 style="margin: 0; color: #155724; font-weight: 600;">100% Secure Payment</h6>
+            <p style="margin: 0; color: #155724; font-size: 13px;">Your payment information is encrypted with 256-bit SSL security. We never store your card details.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="trust-indicators">
+        <div class="trust-item">
+          <i class="fas fa-lock"></i>
+          <div>SSL Encrypted</div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-shield-alt"></i>
+          <div>PCI Compliant</div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-check-circle"></i>
+          <div>Verified Merchant</div>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-headset"></i>
+          <div>24/7 Support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script>
+    function selectMethod(method) {
+      // Reset all
+      document.querySelectorAll('.method-card').forEach(card => card.classList.remove('active'));
+      document.querySelectorAll('.payment-form').forEach(form => form.classList.remove('active'));
+      
+      // Activate selected
+      document.getElementById(method + '-card').classList.add('active');
+      document.getElementById(method + '-form').classList.add('active');
+    }
+
+    function processPayment(event, method) {
+      event.preventDefault();
+      
+      const button = event.target.querySelector('.btn-pay');
+      const originalText = button.innerHTML;
+      
+      // Processing state
+      button.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Processing Payment...';
+      button.disabled = true;
+      
+      // Simulate payment processing
+      setTimeout(() => {
+        button.innerHTML = '<i class="fas fa-check" style="margin-right: 8px;"></i>Payment Successful!';
+        button.style.background = 'linear-gradient(135deg, #28a745 0%, #20c997 100%)';
+        
+        setTimeout(() => {
+          window.location.href = "{% url 'demo-payment-success-appointment' pk=patient_id id=appointment_id %}";
+        }, 1500);
+      }, 3000);
+    }
+
+    // Format inputs
+    document.addEventListener('input', function(e) {
+      if (e.target.placeholder.includes('1234 5678')) {
+        let value = e.target.value.replace(/\s/g, '').replace(/(.{4})/g, '$1 ').trim();
+        e.target.value = value;
+      }
+      if (e.target.placeholder === 'MM/YY') {
+        let value = e.target.value.replace(/\D/g, '').replace(/(\d{2})(\d)/, '$1/$2');
+        e.target.value = value;
+      }
+    });
+  </script>
+
+</body>
+</html>

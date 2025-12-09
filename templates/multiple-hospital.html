@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+	
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Care Point - Healthcare Management System</title>
+	
+	<!-- Favicons -->
+	<link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}">
+	
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/style.css' %}">
+		
+	<link rel="stylesheet"href="{% static 'HealthStack-System/css/Normal/hospital.css' %}">
+	<link rel="stylesheet"href="{% static 'HealthStack-System/css/Normal/search2.css' %}">
+
+	<style>
+		.glass-card {
+			background: rgba(255,255,255,0.1) !important;
+			backdrop-filter: blur(50px) !important;
+			-webkit-backdrop-filter: blur(50px) !important;
+			border-radius: 20px;
+			border: 1px solid rgba(255,255,255,0.2);
+			box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+			transition: all 0.3s ease;
+		}
+		.sidebar-glass {
+			background: rgba(255,255,255,0.1);
+			backdrop-filter: blur(50px);
+			-webkit-backdrop-filter: blur(50px);
+			border-radius: 20px;
+			border: 1px solid rgba(255,255,255,0.3);
+			box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+		}
+		.breadcrumb-glass {
+			background: rgba(255,255,255,0.1);
+			backdrop-filter: blur(50px);
+			-webkit-backdrop-filter: blur(50px);
+			border-radius: 15px;
+			border: 1px solid rgba(255,255,255,0.2);
+			padding: 20px;
+			margin-bottom: 30px;
+		}
+		.btn-glass {
+			background: rgba(255,255,255,0.2);
+			backdrop-filter: blur(30px);
+			-webkit-backdrop-filter: blur(30px);
+			border: 1px solid rgba(255,255,255,0.3);
+			color: white;
+			border-radius: 12px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+		.btn-glass:hover {
+			background: rgba(255,255,255,0.3);
+			color: white;
+			transform: translateY(-2px);
+		}
+		* {
+			color: black !important;
+		}
+		h1, h2, h3, h4, h5, h6, p, span, a, label {
+			color: black !important;
+		}
+		.breadcrumb-center {
+			position: absolute !important;
+			left: 50% !important;
+			top: 50% !important;
+			transform: translate(-50%, -50%) !important;
+			width: auto !important;
+			text-align: center !important;
+			z-index: 10 !important;
+		}
+		.breadcrumb-glass {
+			min-height: 120px !important;
+			padding: 40px 20px !important;
+			position: relative !important;
+		}
+		.header-nav {
+			background: rgba(255,255,255,0.1) !important;
+			backdrop-filter: blur(20px) !important;
+			border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+		}
+		.profile-sidebar, .profile-widget, .profile-info-widget {
+			background: rgba(255,255,255,0.1) !important;
+			backdrop-filter: blur(15px) !important;
+			border-radius: 15px !important;
+			border: 1px solid rgba(255,255,255,0.2) !important;
+		}
+		.profile-info-widget {
+			display: flex !important;
+			align-items: center !important;
+			padding: 20px !important;
+		}
+		.booking-doc-img {
+			margin-right: 15px !important;
+		}
+	</style>
+
+	</head>
+	<body>
+		<video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+			<source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+		</video>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+			<header class="header">
+
+				{% if user.is_authenticated and user.is_patient %}
+				{% include 'patient_navbar.html' %}
+				{% endif %}
+				
+				{% if user.is_authenticated and user.is_doctor %}
+				{% include 'doctor-navbar.html' %}
+				{% endif %}
+
+			</header>
+			<!-- /Header -->
+			
+			<!-- Breadcrumb -->
+			<div style="padding: 30px 0;">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<div class="breadcrumb-glass">
+								<div class="row align-items-center">
+									<div class="col-md-6 breadcrumb-center">
+										<nav aria-label="breadcrumb">
+											<ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+												{% if user.is_authenticated and user.is_patient %}
+												<li class="breadcrumb-item"><a href="{% url 'patient-dashboard' %}" style="color: white; text-decoration: none;">Home</a></li>
+												{% endif %}
+												{% if user.is_authenticated and user.is_doctor %}
+												<li class="breadcrumb-item"><a href="{% url 'doctor-dashboard' %}" style="color: white; text-decoration: none;">Home</a></li>
+												{% endif %}
+												<li class="breadcrumb-item active" aria-current="page" style="color: white;">Hospitals</li>
+											</ol>
+										</nav>
+										<h2 style="color: white; font-weight: 800; font-size: 2.5rem; margin: 0;">Hospitals</h2>
+									</div>
+									<div class="col-md-6" style="position: absolute; right: 20px; top: 20px;">
+										<div class="top-nav-search">
+											<form action="{% url 'multiple-hospital' %}" method="GET">
+												<input type="text" class="form-control" placeholder="Search hospital" name="search_query" value="{{search_query}}" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 25px;">
+												
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-5 col-lg-4 col-xl-3">
+							<div class="sidebar-glass" style="padding: 30px; position: sticky; top: 100px; margin-bottom: 100px;">
+								{% if user.is_authenticated and user.is_patient %}
+									<div style="text-align: center; margin-bottom: 30px;">
+										<img src="{{ patient.featured_image.url }}" alt="User Image" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);" />
+										<h3 style="color: white; font-weight: 700; margin: 15px 0 5px 0;">{{patient.name}}</h3>
+										<div style="color: white; font-size: 0.9rem; margin-bottom: 15px;">
+											<div style="margin-bottom: 8px;">
+												<i class="fas fa-birthday-cake" style="margin-right: 8px; color: white;"></i>
+												{{ patient.dob }}
+											</div>
+											<div>
+												<i class="fas fa-map-marker-alt" style="margin-right: 8px; color: white;"></i>
+												{{ patient.address }}
+											</div>
+										</div>
+									</div>
+									<nav>
+										<ul style="list-style: none; padding: 0; margin: 0;">
+											<li><a href="{% url 'patient-dashboard' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-columns" style="margin-right: 10px; width: 20px;"></i><span>Dashboard</span></a></li>
+											<li><a href="{% url 'search' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-user-md" style="margin-right: 10px; width: 20px;"></i><span>Search Doctor</span></a></li>
+											<li><a href="{% url 'pharmacy_shop' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-capsules" style="margin-right: 10px; width: 20px;"></i><span>Medical Shop</span></a></li>
+											<li><a href="{% url 'multiple-hospital' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: linear-gradient(45deg, #6c5ce7, #74b9ff); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease; transform: translateX(5px);"><i class="fas fa-hospital" style="margin-right: 10px; width: 20px;"></i><span>Multiple Hospital</span></a></li>
+											<li><a href="{% url 'doctor-test-list'%}" target="_blank" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-hourglass-start" style="margin-right: 10px; width: 20px;"></i><span>Test Information</span></a></li>
+											<li><a href="{% url 'profile-settings' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-user-cog" style="margin-right: 10px; width: 20px;"></i><span>Profile Settings</span></a></li>
+											<li><a href="{% url 'change-password' pk=user.id%}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-lock" style="margin-right: 10px; width: 20px;"></i><span>Change Password</span></a></li>
+											<li><a href="{% url 'logout' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;"><i class="fas fa-sign-out-alt" style="margin-right: 10px; width: 20px;"></i><span>Logout</span></a></li>
+										</ul>
+									</nav>
+								{% endif %}
+								{% if user.is_authenticated and user.is_doctor %}
+								{% include 'doctor-sidebar.html' %}
+								{% endif %}
+							</div>
+						</div>
+						
+						<div class="col-md-7 col-lg-8 col-xl-9">
+							<div class="glass-card" style="padding: 30px; margin-bottom: 30px;">
+								<h1 style="text-align: center; font-size: 3rem; color: white; font-weight: 800; margin-bottom: 40px;">All Hospitals</h1>
+								<div class="row">
+									{% for hospital in hospitals %}
+									<div class="col-md-3 mb-3">
+										<div class="glass-card" style="padding: 15px; height: 100%; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+											<div style="text-align: center;">
+												<img src="{{hospital.featured_image.url}}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 10px;" alt="Hospital Image" />
+												<h5 style="color: white; font-weight: 600; margin-bottom: 15px; font-size: 1rem;">{{hospital.name}}</h5>
+												<a href="{% url 'hospital-profile' pk=hospital.hospital_id %}" class="btn-glass" style="padding: 8px 20px; text-decoration: none; display: inline-block; font-size: 0.9rem;">
+													Explore
+												</a>
+											</div>
+										</div>
+									</div>
+									{% if forloop.counter|divisibleby:4 and not forloop.last %}
+								</div><div class="row">
+									{% endif %}
+									{% endfor %}
+
+								</div>
+							</div>
+							<div style="text-align: center; margin-top: 30px;">
+								<div class="glass-card" style="padding: 8px 12px; display: inline-block;">
+									{% if hospitals.has_previous %}
+										<a href="?page={{ hospitals.previous_page_number }}" class="btn-glass" style="padding: 8px 15px; margin: 0 5px; text-decoration: none;">Previous</a>
+									{% endif %}
+									<span style="color: white; margin: 0 15px; font-weight: 600; font-size: 0.9rem;">Page {{ hospitals.number }} of {{ hospitals.paginator.num_pages }}</span>
+									{% if hospitals.has_next %}
+										<a href="?page={{ hospitals.next_page_number }}" class="btn-glass" style="padding: 8px 15px; margin: 0 5px; text-decoration: none;">Next</a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>		
+			<!-- /Page Content -->
+
+			
+   
+			<!-- Footer -->
+			{% include 'footer.html' %}
+			<!-- /Footer -->
+		   
+		</div>
+		<!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+		<script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+        <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+
+		<!-- Searchbar JS -->
+		<script src="{% static 'HealthStack-System/js/Normal/sidebar.js' %}"></script>
+		
+		<script>
+			$(document).ready(function() {
+				// Animate glass cards on load
+				$('.glass-card, .sidebar-glass').css('opacity', '0').animate({opacity: 1}, 800);
+				
+				// Add hover effects to hospital cards
+				$('.glass-card').hover(
+					function() {
+						$(this).css('transform', 'translateY(-5px)');
+					},
+					function() {
+						$(this).css('transform', 'translateY(0)');
+					}
+				);
+			});
+		</script>
+		
+	</body>
+
+<!-- doccure/change-password.html  30 Nov 2019 04:12:18 GMT -->
+</html>

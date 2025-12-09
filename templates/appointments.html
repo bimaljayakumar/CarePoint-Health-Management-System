@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- doccure/appointments.html  30 Nov 2019 04:12:09 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Care Point - Appointments</title>
+
+    <!-- Favicons -->
+    <link
+      type="image/x-icon"
+      href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"
+      rel="icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"
+    />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"
+    />
+
+    <!-- Main CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/style.css' %}"
+    />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .glass-card {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+      }
+      .sidebar-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 40px 20px;
+        margin-bottom: 30px;
+        min-height: 120px;
+        position: relative;
+      }
+      .breadcrumb-center {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: auto !important;
+        text-align: center !important;
+        z-index: 10 !important;
+      }
+      * {
+        color: black !important;
+      }
+      h1, h2, h3, h4, h5, h6, p, span, a, label {
+        color: black !important;
+      }
+      .profile-sidebar, .profile-widget, .profile-info-widget {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+      }
+      .profile-info-widget {
+        display: flex !important;
+        align-items: center !important;
+        padding: 20px !important;
+      }
+      .booking-doc-img {
+        margin-right: 15px !important;
+      }
+      .header-nav {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+      }
+      .appointment-list {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        margin-bottom: 20px !important;
+        padding: 20px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="header">{% include 'doctor-navbar.html' %}</header>
+      <!-- /Header -->
+
+      <!-- Breadcrumb -->
+      <div style="padding: 30px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-glass">
+                <div class="breadcrumb-center">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+                      <li class="breadcrumb-item"><a href="{% url 'doctor-dashboard' %}" style="color: black; text-decoration: none;">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page" style="color: black;">Appointments</li>
+                    </ol>
+                  </nav>
+                  <h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Appointments</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Breadcrumb -->
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-5 col-lg-4 col-xl-3">
+              <div class="sidebar-glass" style="padding: 30px; position: sticky; top: 100px; margin-bottom: 100px;">
+                {% include 'doctor-sidebar.html' %}
+              </div>
+            </div>
+            
+            <div class="col-md-7 col-lg-8 col-xl-9">
+              <div class="glass-card" style="padding: 30px; margin-bottom: 100px;">
+                <div class="appointments">
+                <!-- Appointment List -->
+                {% for app in appointments %}
+                <div class="appointment-list">
+                  <div class="profile-info-widget" style="display: flex; justify-content: space-between;">
+                    <div style="display: flex;">
+                      <a href="patient-profile.html" class="booking-doc-img">
+                        <img
+                          src="{{app.patient.featured_image.url}}"
+                          alt="User Image"
+                        />
+                      </a>
+                      <div class="profile-det-info">
+                        <h3><a href="{%url 'patient-profile' pk=app.patient.patient_id%}">{{app.patient.name}}</a></h3>
+                        
+                        <div class="patient-details">
+                          <h5>
+                            <i class="fas fa-file"></i>Appoinment Serial No: #PT{{app.serial_number}}
+                          </h5>
+                          <h5>
+                            <i class="far fa-clock"></i> {{app.date}} {{app.time}}
+                          </h5>
+                          <h5>
+                            <i class="fas fa-briefcase-medical"></i> Purpose: {{app.appointment_type}} 
+                          </h5>
+                          <h5>
+                            <i class="fas fa-map-marker-alt"></i>{{app.patient.address}}
+                          </h5>
+                          <h5>
+                            <i class="fas fa-envelope"></i> {{app.patient.email}}
+                          </h5>
+                          
+                          <h5>
+                            {% if app.payment_status == 'pending' %}
+                            <i class="fas fa-money-check-alt"></i> <span class="badge badge-pill bg-warning-light">Payment Status: Pending</span>
+                            {% endif %}
+                            {% if app.payment_status == 'VALID' %}
+                            <i class="fas fa-money-check-alt"></i> <span class="badge badge-pill bg-success-light">Payment Status: Paid</span>
+                            {% endif %}
+                          </h5>
+                          <h5 class="mb-0">
+                            <i class="fas fa-phone"></i> +880{{app.patient.phone_number}}
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="appointment-details patient-details" style="min-width: 300px; margin-left: 50px;">
+                      <h5><strong>Appointment Details</strong></h5>
+                      <h5><i class="fas fa-hashtag"></i> #PT{{app.serial_number}}</h5>
+                      <h5><i class="fas fa-calendar"></i> {{app.date}} {{app.time}}</h5>
+                      <h5><i class="fas fa-info-circle"></i> Status: Pending</h5>
+                      <h5><i class="fas fa-check-circle"></i> Confirm Date: {{app.date}}</h5>
+                      <h5><i class="fas fa-rupee-sign"></i> Consultation Fee: ₹{{app.doctor.consultation_fee|default:"0"}}</h5>
+                    </div>
+                  </div>
+                  <div class="appointment-action">
+
+                    <a href="{% url 'accept-appointment' pk=app.id %}" onclick="return confirm('Accept appointment?');" class="btn btn-sm btn-success" style="font-weight: 700;"><i class="fas fa-check"></i> Accept</a>
+                    <a href="{% url 'reject-appointment' pk=app.id %}" onclick="return confirm('Reject Appointment?');" class="btn btn-sm btn-danger" style="font-weight: 700;"><i class="fas fa-times"></i> Reject</a>
+                  </div>
+                  
+                </div>
+                <!-- /Appointment List -->
+                {% endfor %}
+                
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+      <!-- /Page Content -->
+
+      <!-- Footer -->
+      {% include 'footer.html' %}
+      <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+
+
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/script.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+  </body>
+
+  <!-- doccure/appointments.html  30 Nov 2019 04:12:09 GMT -->
+</html>

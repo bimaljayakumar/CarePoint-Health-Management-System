@@ -1,0 +1,381 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- HealthStack/booking.html  30 Nov 2019 04:12:16 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Care Point - Book Appointment</title>
+
+    <!-- Favicons -->
+    <link
+      type="image/x-icon"
+      href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"
+      rel="icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"
+    />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"
+    />
+
+    <!-- Main CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/style.css' %}"
+    />
+
+    <!-- Booking CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/booking.css' %}"
+    />
+    
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/timedropper.css' %}"
+    />
+    <link href="{% static 'HealthStack-System/css/Normal/date_dropper.css' %}" rel="stylesheet"/>   
+    <link href="{% static 'HealthStack-System/css/Normal/my_style.css' %}" rel="stylesheet"/>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+    <!-- datedropper -->
+    <!-- <script src="{% static 'HealthStack-System/js/Normal/datedropper-jquery.js' %}"></script> -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .glass-card {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 40px 20px;
+        margin-bottom: 30px;
+        min-height: 120px;
+        position: relative;
+      }
+      .breadcrumb-center {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: auto !important;
+        text-align: center !important;
+        z-index: 10 !important;
+      }
+      * {
+        color: black !important;
+      }
+      h1, h2, h3, h4, h5, h6, p, span, a, label {
+        color: black !important;
+      }
+      .schedule, .widget-boxed, .widget-boxed-header {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+      }
+      .agent-contact-form-sidebar {
+        background: transparent !important;
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="header">{% include 'patient_navbar.html' %}</header>
+      <!-- /Header -->
+
+      <!-- Breadcrumb -->
+      <div style="padding: 30px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-glass">
+                <div class="breadcrumb-center">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+                      <li class="breadcrumb-item"><a href="{% url 'patient-dashboard' %}" style="color: black; text-decoration: none;">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page" style="color: black;">Booking</li>
+                    </ol>
+                  </nav>
+                  <h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Book Appointment</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Breadcrumb -->
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="glass-card" style="padding: 30px; margin-bottom: 30px;">
+                  <div class="booking-doc-info">
+                    <a href="doctor-profile.html" class="booking-doc-img">
+                      <img
+                        src="{{ doctor.featured_image.url }}"
+                        alt="User Image"
+                      />
+                    </a>
+                    <div class="booking-info">
+                      <h4>
+                        <a href="doctor-profile.html">{{doctor.name}}</a>
+                      </h4>
+                      <div class="rating">
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star"></i>
+                        <span class="d-inline-block average-rating">35</span>
+                      </div>
+                      <p class="text-muted mb-0">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{doctor.hospital_name}}
+                      </p>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Schedule Widget -->
+              <div class="glass-card" style="padding: 30px; margin-bottom: 100px;">
+                <!-- <div class="card-body">
+                  <div class="booking-doc-info">
+                    
+
+                    <form
+                      action="#"
+                      method="POST"
+                      enctype="multipart/form-data"
+                    >
+                      {% csrf_token %}
+
+                      <div class="row form-row">
+                        <div class="col-12 col-md-12">
+                          <div class="form-group">
+                            <div class="change-avatar"></div>
+                          </div>
+                        </div>
+
+                        <div class="col-8 col-md-8">
+                          <div class="form-group">
+                            <label>Appointment Date</label>
+                            <input
+                              type="date"
+                              class="form-control"
+                              name="date"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-8 col-md-8">
+                          <div class="form-group">
+                            <label>Appointment Time</label>
+                            <input
+                              type="time"
+                              class="form-control"
+                              name="time"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-8 col-md-4">
+                          <div class="form-group">
+                            <label>Appointment Type</label>
+                            <select
+                              class="form-control select"
+                              name="appointment_type"
+                            >
+                              <option value="checkup">checkup</option>
+                              <option value="report">report</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="submit-section">
+                        <button
+                          type="submit"
+                          class="btn btn-primary submit-btn"
+                        >
+                          Save Changes
+                        </button>
+                      </div>
+                      
+                    </form>
+                    
+                  </div>
+                </div> -->
+                <!-- /Schedule Header -->
+
+                <div class="schedule widget-boxed mt-33 mt-0">
+                  <div class="widget-boxed-header">
+                      <h4><i class="fa fa-calendar pr-3 padd-r-10"></i>Schedule an Appointment</h4>
+                  </div>
+
+                  <form method="post" action="{% url 'booking' pk=doctor.doctor_id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="agent-contact-form-sidebar">
+                          <div class="row">
+                              <div class="col-lg-6 col-md-12 book">
+                                  <label>Appointment Date</label>
+                                  <!-- <input type="date" name="appoint_date" id="reservation-date" data-lang="en" data-large-mode="true" data-min-year="2021" data-max-year="2025" data-id="datedropper-0" data-theme="my-style" class="form-control" > -->
+                                  <input type="date" name="appoint_date" id="reservation-date" data-large-mode="true" data-lock="from" data-theme="my-style" class="form-control"/>
+                                  
+                                </div>
+                              <div class="col-lg-6 col-md-12 book2">
+                                  <label>Appointment Time</label>
+                                  <input type="text" name="appoint_time" id="reservation-time" class="form-control" readonly="">
+                              </div>
+                              <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                  <label>Appointment Type</label>
+                                  <select
+                                    class="form-control select"
+                                    name="appointment_type"
+                                  >
+                                    <option value="checkup">checkup</option>
+                                    <option value="report">report</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-lg-12 col-md-12" style="padding-bottom: 10px;">
+                                <label>Message</label>
+                                <textarea placeholder="Message" name="message"></textarea>
+                              </div>
+
+                          </div>
+                          <div class="submit-section">
+                            <button
+                              type="submit"
+                              class="btn btn-primary submit-btn"
+                            >
+                              Submit Request
+                            </button>
+                          </div>
+                      </div>
+                  </form>
+
+              </div>
+              </div>
+
+              <!-- /Schedule Widget Payment button -->
+
+              <!-- Submit Section -->
+              <!-- <div class="submit-section proceed-btn text-right">
+                <a href="#" class="btn btn-primary submit-btn"
+                  >Proceed to Pay</a
+                >
+              </div> -->
+              <!-- /Submit Section -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Content -->
+
+      <!-- Footer -->
+      {% include 'footer.html' %}
+      <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+
+    <!-- booking js -->
+    <script src="{% static 'HealthStack-System/js/Normal/timedropper.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/date_dropper.js' %}"></script>
+
+    <!-- Date Dropper Script-->
+    <script>
+      $('#reservation-date').dateDropper();
+    </script>
+  <!-- Time Dropper Script-->
+    <script>
+      this.$('#reservation-time').timeDropper({
+          setCurrentTime: false,
+          meridians: true,
+          primaryColor: "blue",
+          borderColor: "blue",
+          minutesInterval: '15'
+      });
+    </script>
+
+    <script>
+      $(document).ready(function() {
+          $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+              disableOn: 700,
+              type: 'iframe',
+              mainClass: 'mfp-fade',
+              removalDelay: 160,
+              preloader: false,
+              fixedContentPos: false
+          });
+      });
+    </script>
+
+    <script>
+      $('.slick-carousel').each(function() {
+          var slider = $(this);
+          $(this).slick({
+              infinite: true,
+              dots: false,
+              arrows: false,
+              centerMode: true,
+              centerPadding: '0'
+          });
+
+          $(this).closest('.slick-slider-area').find('.slick-prev').on("click", function() {
+              slider.slick('slickPrev');
+          });
+          $(this).closest('.slick-slider-area').find('.slick-next').on("click", function() {
+              slider.slick('slickNext');
+          });
+      });
+    </script>
+  </body>
+
+  <!-- doccure/booking.html  30 Nov 2019 04:12:16 GMT -->
+</html>

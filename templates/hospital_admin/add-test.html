@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Care Point - Add Test</title>
+    <link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon" />
+
+    <style>
+      body {
+        background: rgba(0,0,0,0.3);
+        min-height: 100vh;
+        position: relative;
+      }
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+      }
+      .main-wrapper, .page-wrapper, .content, .sidebar {
+        background: transparent;
+      }
+      .table, thead, tbody, th, td, tr {
+        background: transparent !important;
+        color: black !important;
+      }
+      * {
+        background-color: transparent !important;
+      }
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+      }
+      .header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+      }
+      .dropdown-menu {
+        background: white !important;
+        backdrop-filter: none !important;
+        border-radius: 15px !important;
+        border: 1px solid #ccc !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+        z-index: 9999 !important;
+      }
+      .dropdown-item {
+        color: black !important;
+        background: transparent !important;
+      }
+      .dropdown-item:hover {
+        background: rgba(255,255,255,0.1) !important;
+        color: black !important;
+      }
+      .notifications, .topnav-dropdown-header, .noti-content, .topnav-dropdown-footer {
+        background: white !important;
+      }
+      .form-control {
+        background: rgba(255,255,255,0.2) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: black !important;
+      }
+      .btn {
+        background: rgba(255,255,255,0.2) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: black !important;
+      }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/bootstrap.min.css'%}"> 
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}"> 
+</head>
+<body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <header class="header">{% include 'hospital_admin/labworker-navbar.html' %}</header>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar" style="display: none;">
+            {% include 'hospital_admin/labworker-sidebar.html' %} </aside>
+        <!-- /Sidebar -->
+        
+        <div class="page-wrapper" style="margin-left: 0 !important; width: 100% !important;">
+            <div class="content container-fluid">
+                
+                <!-- Page Header -->
+                <div class="breadcrumb-glass" style="text-align: center; margin-left: -250px; padding-left: 270px;">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h2 style="color: black; font-weight: 800; font-size: 2rem; margin: 0; margin-left: 0px;">Add Test</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mb-2" style="background: transparent; justify-content: center; margin-left: 0px;">
+                                    <li class="breadcrumb-item" style="color: black;"><a href="{% url 'test-list' %}" style="color: black;">Test List</a></li>
+                                    <li class="breadcrumb-item active" style="color: black;">Add Test</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="glass-card">
+                            <div class="card-header" style="background: transparent; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 20px;">
+                                <h4 class="card-title" style="color: black; font-weight: 700;">Create New Test</h4>
+                            </div>
+                            <div class="card-body" style="padding: 20px;">
+                                <form action="{% url 'add-test' %}" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label style="color: black; font-weight: 600;">Test Name</label>
+                                                <input class="form-control" type="text" name="test_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label style="color: black; font-weight: 600;">Test Price</label>
+                                                <input class="form-control" type="number" name="test_price" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="submit-section" style="text-align: center; margin-top: 30px;">
+                                        <button type="submit" class="btn btn-primary submit-btn" style="padding: 12px 30px; font-weight: 600;">
+                                            Save Test
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Wrapper -->
+    </div>
+    <!-- /Main Wrapper -->
+    
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+    
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+    <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+    
+    <!-- Slimscroll JS -->
+    <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+    
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+    
+</body>
+</html>

@@ -1,0 +1,358 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- doccure/search.html  30 Nov 2019 04:12:16 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Care Point - Healthcare Management System</title>
+
+    <!-- Favicons -->
+    <link
+      type="image/x-icon"
+      href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"
+      rel="icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"
+    />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"
+    />
+
+    <!-- Datetimepicker CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normalbootstrap-datetimepicker.min.css' %}"
+    />
+
+    <!-- Select2 CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/select2/css/select2.min.css'%}"
+    />
+
+    <!-- Fancybox CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fancybox/jquery.fancybox.min.css'%}"
+    />
+
+    <!-- Main CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/style.css' %}"
+    />
+
+    <!-- <link rel="stylesheet"href="{% static 'HealthStack-System/css/Normal/search2.css' %}"> -->
+    <link rel="stylesheet"href="{% static 'HealthStack-System/css/Normal/search3.css' %}">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .glass-card {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      }
+      .sidebar-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 40px 20px;
+        margin-bottom: 30px;
+        min-height: 120px;
+      }
+      .btn-glass {
+        background: rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: white;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .btn-glass:hover {
+        background: rgba(255,255,255,0.35);
+        transform: translateY(-2px);
+        color: black;
+      }
+      * {
+        color: black !important;
+      }
+      .btn-glass {
+        color: black !important;
+      }
+      .breadcrumb-center {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: auto !important;
+        text-align: center !important;
+        z-index: 10 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="header">{% include 'patient_navbar.html' %}</header>
+      <!-- /Header -->
+
+      <!-- Breadcrumb -->
+      <div style="padding: 30px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-glass">
+                <div class="row align-items-center">
+                  <div class="col-md-6 breadcrumb-center">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+                        <li class="breadcrumb-item"><a href="{% url 'patient-dashboard' %}" style="color: white; text-decoration: none;">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" style="color: white;">Search Doctor</li>
+                      </ol>
+                    </nav>
+                    <h2 style="color: white; font-weight: 800; font-size: 2.5rem; margin: 0;">Search Doctor</h2>
+                  </div>
+                  <div class="col-md-6" style="position: absolute; right: 20px; top: 20px;">
+                    <div class="top-nav-search">
+                      <form action="{% url 'search' %}" method="GET">
+                        <input type="text" class="form-control" placeholder="Search doctor" name="search_query" value="{{search_query}}" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 25px;">
+                        <button class="btn btn-glass" type="submit" style="border-radius: 50%; width: 40px; height: 40px;"><i class="fa fa-search"></i></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Breadcrumb -->
+
+      <!-- Page Content -->
+      <div style="padding: 0 0 50px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Profile Sidebar -->
+            <div class="col-md-5 col-lg-4 col-xl-3">
+              <div class="sidebar-glass" style="padding: 30px; position: sticky; top: 100px;">
+                <!-- Profile Section -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                  <img src="{{ patient.featured_image.url }}" alt="User Image" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);" />
+                  <h3 style="color: white; font-weight: 700; margin: 15px 0 5px 0;">{{patient.name}}</h3>
+                  <div style="color: white; font-size: 0.9rem; margin-bottom: 15px;">
+                    <div style="margin-bottom: 8px;">
+                      <i class="fas fa-birthday-cake" style="margin-right: 8px; color: white;"></i>
+                      {{ patient.dob }}
+                    </div>
+                    <div>
+                      <i class="fas fa-map-marker-alt" style="margin-right: 8px; color: white;"></i>
+                      {{ patient.address }}
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav>
+                  <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li>
+                      <a href="{% url 'patient-dashboard' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;">
+                        <i class="fas fa-columns" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'search' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: linear-gradient(45deg, #6c5ce7, #74b9ff); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease; transform: translateX(5px);">
+                        <i class="fas fa-user-md" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Search Doctor</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'pharmacy_shop' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;">
+                        <i class="fas fa-capsules" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Medical Shop</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'multiple-hospital' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;">
+                        <i class="fas fa-hospital" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Multiple Hospital</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'doctor-test-list'%}" target="_blank" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;">
+                        <i class="fas fa-hourglass-start" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Test Information</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'profile-settings' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;">
+                        <i class="fas fa-user-cog" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Profile Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'change-password' pk=user.id%}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;">
+                        <i class="fas fa-lock" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Change Password</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'logout' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 8px; color: white; font-weight: 500; transition: all 0.3s ease;">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Logout</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <!-- / Profile Sidebar -->
+
+            <div class="col-md-12 col-lg-8 col-xl-9">
+              {% for doctor in doctors %}
+              <!-- Doctor Widget -->
+              <div class="glass-card" style="margin-bottom: 20px;">
+                <div style="padding: 25px;">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="flex-shrink: 0;">
+                      <a href="{% url 'doctor-profile' pk=doctor.doctor_id %}">
+                        <img
+                          src="{{ doctor.featured_image.url }}"
+                          style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover; border: 3px solid rgba(255,255,255,0.3);"
+                          alt="Doctor Image"
+                        />
+                      </a>
+                    </div>
+                    <div style="flex: 1;">
+                      <h4 style="color: white; font-weight: 700; margin-bottom: 10px; font-size: 1.3rem;">
+                        <a href="{% url 'doctor-profile' pk=doctor.doctor_id %}" style="color: white; text-decoration: none;">Dr. {{doctor.name}}</a>
+                      </h4>
+                      <p style="color: white; margin-bottom: 8px; font-size: 0.95rem;"><b>Department:</b> {{ doctor.department_name.hospital_department_name }}</p>
+                      <p style="color: white; margin-bottom: 8px; font-size: 0.95rem;"><b>Specialization:</b> {{ doctor.specialization.specialization_name }}</p>
+                      <p style="color: white; margin-bottom: 15px; font-size: 0.95rem;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 8px; color: #74b9ff;"></i>
+                        <b>Hospital:</b> {{doctor.hospital_name}}
+                      </p>
+                      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <div style="color: white; font-weight: 600; font-size: 1.1rem;">
+                          <i class="far fa-money-bill-alt" style="margin-right: 8px; color: #74b9ff;"></i>
+                          ₹{{doctor.consultation_fee}}
+                        </div>
+                      </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                      <a class="btn-glass" href="{% url 'doctor-profile' pk=doctor.doctor_id %}" style="padding: 10px 20px; text-decoration: none; text-align: center; min-width: 140px;">
+                        View Profile
+                      </a>
+                      <a class="btn-glass" href="{% url 'booking' pk=doctor.doctor_id %}" style="padding: 10px 20px; text-decoration: none; text-align: center; min-width: 140px; background: linear-gradient(45deg, #6c5ce7, #74b9ff);">
+                        Book Appointment
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Doctor Widget -->
+              {% endfor %}
+
+              <div class="text-center" style="margin-top: 30px;">
+                <div class="glass-card" style="padding: 15px; display: inline-block;">
+                  {% if doctors.has_previous %}
+                    <a href="?page={{ doctors.previous_page_number }}" class="btn-glass" style="padding: 8px 15px; margin: 0 5px; text-decoration: none;">Previous</a>
+                  {% endif %}
+                  <span style="color: black; margin: 0 15px; font-weight: 600;">Page {{ doctors.number }} of {{ doctors.paginator.num_pages }}</span>
+                  {% if doctors.has_next %}
+                    <a href="?page={{ doctors.next_page_number }}" class="btn-glass" style="padding: 8px 15px; margin: 0 5px; text-decoration: none;">Next</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Content -->
+
+      <!-- Footer -->
+      {% include 'footer.html' %}
+      <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+    <!-- Select2 JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/select2/js/select2.min.js'%}"></script>
+
+    <!-- Datetimepicker JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/moment.min.js'%}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap-datetimepicker.min.js'%}"></script>
+
+    <!-- Fancybox JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/fancybox/jquery.fancybox.min.js'%}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+    
+    <script>
+      $(document).ready(function() {
+        // Animate cards on load
+        $('.glass-card, .sidebar-glass').css('opacity', '0').animate({opacity: 1}, 800);
+        
+        // Add hover effects to glass cards
+        $('.glass-card').hover(
+          function() {
+            $(this).css('transform', 'translateY(-5px)');
+          },
+          function() {
+            $(this).css('transform', 'translateY(0)');
+          }
+        );
+      });
+    </script>
+  </body>
+
+  <!-- doccure/search.html  30 Nov 2019 04:12:16 GMT -->
+</html>

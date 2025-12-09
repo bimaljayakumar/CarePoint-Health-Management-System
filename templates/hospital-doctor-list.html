@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- doccure/search.html  30 Nov 2019 04:12:16 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Care Point - Hospital Doctor List</title>
+
+    <!-- Favicons -->
+    <link
+      type="image/x-icon"
+      href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"
+      rel="icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"
+    />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"
+    />
+
+    <!-- Datetimepicker CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normalbootstrap-datetimepicker.min.css' %}"
+    />
+
+    <!-- Select2 CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/select2/css/select2.min.css'%}"
+    />
+
+    <!-- Fancybox CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fancybox/jquery.fancybox.min.css'%}"
+    />
+
+    <!-- Main CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/style.css' %}"
+    />
+
+    <link rel="stylesheet"href="{% static 'HealthStack-System/css/Normal/search2.css' %}">
+
+    <style>
+    .glass-card {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(15px) !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(255,255,255,0.2) !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    }
+    .sidebar-glass {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(20px) !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(255,255,255,0.3) !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    }
+    .breadcrumb-glass {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    * {
+      color: black !important;
+    }
+    .card {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(15px) !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(255,255,255,0.2) !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    }
+    .header-nav {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+    }
+    .btn {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(15px) !important;
+      border: 1px solid rgba(255,255,255,0.2) !important;
+      color: black !important;
+    }
+    .profile-sidebar, .profile-widget, .profile-info-widget, .dashboard-widget {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(15px) !important;
+      border-radius: 15px !important;
+      border: 1px solid rgba(255,255,255,0.2) !important;
+    }
+    .widget-profile, .pro-widget-content {
+      background: transparent !important;
+      border: none !important;
+    }
+    .dashboard-menu ul li a {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(10px) !important;
+      border-radius: 10px !important;
+      margin-bottom: 5px !important;
+    }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="header">
+            {% if user.is_authenticated and user.is_patient %}
+		    {% include 'patient_navbar.html' %}
+	        {% endif %}
+				
+		    {% if user.is_authenticated and user.is_doctor %}
+			{% include 'doctor-navbar.html' %}
+			{% endif %}
+      </header>
+      <!-- /Header -->
+
+      <!-- Breadcrumb -->
+      <div style="padding: 30px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-glass" style="text-align: center;">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+                    {% if user.is_authenticated and user.is_patient %}
+                    <li class="breadcrumb-item"><a href="{% url 'patient-dashboard' %}" style="color: black; text-decoration: none;">Home</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_doctor %}
+                    <li class="breadcrumb-item"><a href="{% url 'doctor-dashboard' %}" style="color: black; text-decoration: none;">Home</a></li>
+                    {% endif %}
+                    <li class="breadcrumb-item active" aria-current="page" style="color: black;">Doctor List</li>
+                  </ol>
+                </nav>
+                <h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Doctor List</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Breadcrumb -->
+
+      <!-- Page Content -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Profile Sidebar -->
+            <div class="col-md-5 col-lg-4 col-xl-3">
+              <div class="sidebar-glass" style="padding: 30px; position: sticky; top: 100px; margin-bottom: 100px;">
+                {% if user.is_authenticated and user.is_patient %}
+                {% include 'patient-sidebar.html' %}
+                {% endif %}
+                {% if user.is_authenticated and user.is_doctor %}
+                {% include 'doctor-sidebar.html' %}
+                {% endif %}
+              </div>
+            </div>
+            <!-- / Profile Sidebar -->
+
+            <div class="col-md-12 col-lg-8 col-xl-9">
+
+              <!-- Doctor Widget -->
+              {% for doctor in doctors %}
+              <div class="card">
+                <div class="card-body">
+                  <div class="doctor-widget">
+                    <div class="doc-info-left">
+                      <div class="doctor-img">
+                        <a href="{% url 'doctor-profile' pk=doctor.doctor_id %}">
+                          <img
+                            src="{{ doctor.featured_image.url }}"
+                            class="img-fluid"
+                            alt="User Image"
+                          />
+                        </a>
+                      </div>
+                      <div class="doc-info-cont">
+                        <h4 class="doc-name">
+                          <a href="{% url 'doctor-profile' pk=doctor.doctor_id %}">Dr. {{doctor.name}}</a>
+                        </h4>
+                        <p class="doc-speciality">{{ doctor.department_name.hospital_department_name }}</p>
+                        <h5 class="doc-department">
+                          {{ doctor.specialization.specialization_name }}
+                        </h5>
+                        <div class="rating">
+                          <i class="fas fa-star filled"></i>
+                          <i class="fas fa-star filled"></i>
+                          <i class="fas fa-star filled"></i>
+                          <i class="fas fa-star filled"></i>
+                          <i class="fas fa-star"></i>
+                          <span class="d-inline-block average-rating"
+                            >(17)</span
+                          >
+                        </div>
+                        <div class="clinic-details">
+                          <p class="doc-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {{doctor.hospital_name}}
+                          </p>
+                          <ul class="clinic-gallery">
+                            <li>
+                              <a
+                                href="{% static 'HealthStack-System/images/Normal/features/feature-01.jpg'%}"
+                                data-fancybox="gallery"
+                              >
+                                <img
+                                  src="{% static 'HealthStack-System/images/Normal/features/feature-01.jpg'%}"
+                                  alt="Feature"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                href="{% static 'HealthStack-System/images/Normal/features/feature-02.jpg'%}"
+                                data-fancybox="gallery"
+                              >
+                                <img
+                                  src="{% static 'HealthStack-System/images/Normal/features/feature-02.jpg'%}"
+                                  alt="Feature"
+                                />
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="clinic-services">
+                          <span>{{ doctor.specialization.specialization_name }}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="doc-info-right">
+                      <div class="clini-infos">
+                        <ul>
+                          <li><i class="far fa-thumbs-up"></i> 98%</li>
+                          <li><i class="far fa-comment"></i> 17 Feedback</li>
+                          <li>
+                            <i class="fas fa-map-marker-alt"></i> Kerala, India
+                          </li>
+                          <li>
+                            <i class="far fa-money-bill-alt"></i>
+                            ₹{{doctor.consultation_fee}}
+                            <i
+                              class="fas fa-info-circle"
+                              data-toggle="tooltip"
+                              title="Lorem Ipsum"
+                            ></i>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="clinic-booking">
+                        <a class="view-pro-btn" href="{% url 'doctor-profile' pk=doctor.doctor_id %}"
+                          >View Profile</a
+                        >
+
+                        {% if user.is_authenticated and user.is_patient %}
+                        <a
+                          class="apt-btn"
+                          href="{% url 'booking' pk=doctor.doctor_id %}"
+                          >Book Appointment</a
+                        >
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              <!-- /Doctor Widget -->
+             
+
+              <div class="load-more text-center">
+                <a class="btn btn-primary btn-sm" href="javascript:void(0);"
+                  >Load More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Content -->
+
+      <!-- Footer -->
+      {% include 'footer.html' %}
+      <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+    <!-- Select2 JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/select2/js/select2.min.js'%}"></script>
+
+    <!-- Datetimepicker JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/moment.min.js'%}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap-datetimepicker.min.js'%}"></script>
+
+    <!-- Fancybox JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/fancybox/jquery.fancybox.min.js'%}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+  </body>
+
+  <!-- doccure/search.html  30 Nov 2019 04:12:16 GMT -->
+</html>

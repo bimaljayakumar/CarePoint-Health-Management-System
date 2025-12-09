@@ -1,0 +1,264 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Care Point - Registered Doctors</title>
+
+    	<!-- Favicon -->
+    	<link rel="shortcut icon" type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"/>
+
+        <style>
+        body {
+            background: rgba(0,0,0,0.3);
+            min-height: 100vh;
+            position: relative;
+        }
+        .breadcrumb-glass {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important;
+            backdrop-filter: blur(15px) !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+        }
+        .main-wrapper, .page-wrapper, .content {
+            background: transparent;
+        }
+        .table th {
+            background: rgba(255,255,255,0.1) !important;
+            color: black !important;
+            font-weight: 700 !important;
+        }
+        .table td {
+            color: black !important;
+        }
+        .btn {
+            background: rgba(255,255,255,0.15) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            color: black !important;
+            border-radius: 12px !important;
+        }
+        .table, thead, tbody, th, td, tr {
+            background: transparent !important;
+        }
+        .dataTables_wrapper, .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_filter, .dataTables_processing {
+            background: transparent !important;
+            color: black !important;
+        }
+        .dataTables_wrapper .dataTables_length select, .dataTables_wrapper .dataTables_filter input {
+            background: rgba(255,255,255,0.1) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            color: black !important;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            background: transparent !important;
+            color: black !important;
+        }
+        .paginate_button.previous, .paginate_button.next {
+            background: transparent !important;
+            color: black !important;
+        }
+        .paginate_button.previous:hover, .paginate_button.next:hover {
+            background: transparent !important;
+            color: black !important;
+        }
+        .pagination .page-link {
+            background: rgba(255,255,255,0.15) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            color: black !important;
+            border-radius: 8px !important;
+            margin: 0 2px !important;
+        }
+        .pagination .page-link:hover {
+            background: rgba(255,255,255,0.25) !important;
+            color: black !important;
+        }
+        .pagination .page-item.active .page-link {
+            background: rgba(54, 162, 235, 0.8) !important;
+            border-color: rgba(54, 162, 235, 0.5) !important;
+            color: white !important;
+        }
+        .pagination .page-item.disabled .page-link {
+            background: rgba(255,255,255,0.05) !important;
+            color: rgba(0,0,0,0.5) !important;
+        }
+        .dataTables_processing {
+            display: none !important;
+        }
+        .dataTables_info {
+            display: none !important;
+        }
+        </style>
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"> 
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+		
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"> 
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}"> 
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+    </head>
+    <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+	
+		<!-- Main Wrapper -->
+
+		
+			<!-- Header -->
+            <div class="main-wrapper">
+				<header class="header">{% include 'hospital_admin/hospital-admin-navbar.html' %}</header>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+				{% include 'hospital_admin/hospital-admin-sidebar.html' %} </aside>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="breadcrumb-glass" style="text-align: center;">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Registered Doctors</h2>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+										<li class="breadcrumb-item"><a href="{% url 'admin-dashboard' %}" style="color: black; text-decoration: none;">Dashboard</a></li>
+										<li class="breadcrumb-item active" style="color: black;">Registered Doctors</li>
+									</ol>
+								</nav>
+								{% include 'message.html' %}
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Doctor Name</th>
+													<th>Email</th>
+													<th>Department</th>
+													<th>Hospital</th>
+													<th>View profile</th>
+
+													</tr>
+													<tbody>
+														{% for doctor in doctors %}
+														<tr>
+															<td>
+																<h2 class="table-avatar">
+																	<a href="{%url 'admin-doctor-profile' doctor.doctor_id%}" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{doctor.featured_image.url}}" alt="User Image"></a>
+																	<a href="{%url 'admin-doctor-profile' doctor.doctor_id%}">{{doctor.name}}</a>
+																</h2>
+															</td>
+															<td>{{doctor.email}}</td>
+
+															<td>{{doctor.department_name.hospital_department_name}}</td>
+
+															<td>{{doctor.hospital_name.name}}</td>
+															<td>
+																<div class="table-action">
+																	<a
+																	  href="{%url 'admin-doctor-profile' doctor.doctor_id%}"
+																	  class="btn btn-outline-info btn-rounded" 
+																		>
+																		<i class="fas fa-file-alt"></i> View
+																	</a>
+																	<a
+																	  href="{%url 'reject-doctor' pk=doctor.doctor_id%}"
+																	  onclick="return confirm('Reject this doctor?');"
+																	  class="btn btn-outline-danger btn-rounded" 
+																		>
+																		<i class="fas fa-times"></i> Reject
+																	</a>
+										
+																  </div>
+															</td>
+
+
+														</tr>
+														{% endfor %}
+													</tbody>
+											</thead>
+                                        </table>
+										
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+					
+			<!-- /Page Wrapper -->
+		
+            </div>
+        </div>
+
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+        <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/jquery.dataTables.min.js'%}"></script> 
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+		
+		{% if messages %}
+		<script>
+			{% for message in messages %}
+				$(document).ready(function () {
+					$('.toast').toast('show');
+				});
+			{% endfor %}
+		</script>
+	  {% endif %}
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+</html>
+

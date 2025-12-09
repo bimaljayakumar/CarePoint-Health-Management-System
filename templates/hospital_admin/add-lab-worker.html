@@ -1,0 +1,249 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Care Point - Add Lab Worker</title>
+
+    	<!-- Favicon -->
+
+    	<link rel="shortcut icon" type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"/>
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/bootstrap.min.css'%}"> 
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/font-awesome.min.css'%}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+		
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.css'%}"> 
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}"> 
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+    <style>
+      body {
+        background: rgba(0,0,0,0.3);
+        min-height: 100vh;
+        position: relative;
+      }
+      .card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+        backdrop-filter: blur(20px) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(255,255,255,0.25) !important;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15) !important;
+      }
+      .breadcrumb-bar {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        margin-bottom: 30px;
+      }
+      .breadcrumb-title, .form-group label, .btn {
+        color: black !important;
+        font-weight: 700 !important;
+      }
+      .form-control {
+        background: rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: black !important;
+      }
+      .header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.25);
+      }
+      .sidebar {
+        background: transparent !important;
+      }
+      .form-control {
+        background: rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: black !important;
+        border-radius: 10px !important;
+      }
+      .breadcrumb-bar {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        margin-bottom: 30px;
+      }
+      * {
+        background-color: transparent !important;
+      }
+      .card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+      }
+      .breadcrumb-glass {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+      .main-wrapper, .page-wrapper, .content {
+        background: transparent;
+      }
+    </style>
+    </head>
+    <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+			<header class="header">{% include 'hospital_admin/hospital-admin-navbar.html' %}</header>
+				<!-- Logo -->
+
+            
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+			<aside class="sidebar" id="sidebar">
+				{% include 'hospital_admin/hospital-admin-sidebar.html' %}
+			</aside>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+
+                <div class="content container-fluid">
+
+            <!-- Page Header -->
+			<div class="breadcrumb-glass" style="text-align: center;">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Add Clinical Laboratory Technician</h2>
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+								<li class="breadcrumb-item"><a href="{% url 'admin-dashboard' %}" style="color: black; text-decoration: none;">Dashboard</a></li>
+								<li class="breadcrumb-item active" style="color: black;">Add Lab Worker</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Header -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-7 col-lg-8 col-xl-12">
+							<div class="card">
+								<div class="card-header">
+									<!-- Profile Settings Form -->
+									<form action="{% url 'add-lab-worker' %}" method="POST" enctype="multipart/form-data" >
+										{% csrf_token %}
+
+                                                    {% for field in form %}
+													<div class="row form-row justify-content-center">
+														<div class="col-4 col-md-4">
+                                                            <div class="form-group">
+                                                                <label class="focus-label">{{ field.label }}</label>
+                                                                {{field}}
+                                                            </div>
+														</div>
+													</div>
+                                                    {% endfor %}
+												
+
+
+												<div class="submit-section">
+													<button type="submit" class="btn btn-primary submit-btn" >
+														Save Changes
+													</button>
+												</div>
+												
+									</form>
+									        <!-- /Profile Settings Form -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- /Page Content -->
+
+			
+		   
+		</div>
+		<!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+        <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/jquery.dataTables.min.js'%}"></script> 
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+		
+		<script>
+		$(document).ready(function() {
+			$('input[type="password"]').each(function() {
+				$(this).parent().css('position', 'relative');
+				$(this).after('<span onclick="togglePassword(this)" style="position:absolute;right:15px;top:45%;cursor:pointer;color:black;font-size:14px;font-weight:bold;">Show</span>');
+				$(this).after('<div class="password-requirements" style="font-size:12px;color:black;margin-top:5px;">Password must contain: 1 uppercase, 1 lowercase, 1 digit, min 8 characters</div>');
+			});
+			
+			$('input[type="password"]').on('input', function() {
+				var password = $(this).val();
+				var requirements = $(this).siblings('.password-requirements');
+				var hasUpper = /[A-Z]/.test(password);
+				var hasLower = /[a-z]/.test(password);
+				var hasDigit = /\d/.test(password);
+				var hasLength = password.length >= 8;
+				
+				if (hasUpper && hasLower && hasDigit && hasLength) {
+					requirements.css('color', 'green').text('Password requirements met ✓');
+				} else {
+					requirements.css('color', 'red').text('Password must contain: 1 uppercase, 1 lowercase, 1 digit, min 8 characters');
+				}
+			});
+		});
+		
+		function togglePassword(icon) {
+			var input = $(icon).parent().find('input[type="password"], input[type="text"]')[0];
+			if (input.type === 'password') {
+				input.type = 'text';
+				icon.innerHTML = 'Hide';
+			} else {
+				input.type = 'password';
+				icon.innerHTML = 'Show';
+			}
+		}
+		</script>
+		
+	</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Ready - CarePoint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .report-ready {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+            text-align: center;
+        }
+        
+        .report-ready h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .report-ready h3::before {
+            content: "📄";
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .report-details {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .report-details h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .report-details h3::before {
+            content: "📋";
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .detail-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .detail-value {
+            color: #495057;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .collection-info {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .collection-info h4 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .collection-info h4::before {
+            content: "🕰️";
+            margin-right: 8px;
+        }
+        
+        .collection-info ul {
+            color: #856404;
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .collection-info li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header, .content, .footer {
+                padding: 20px;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>🏥 CarePoint Laboratory</h1>
+            <p>Report Delivery Notification</p>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">
+                Dear {{ values.patient_name }},
+            </div>
+            
+            <p style="color: #495057; margin-bottom: 20px; font-size: 16px;">
+                Great news! Your laboratory report has been completed and is now ready for collection. Please find the details below.
+            </p>
+            
+            <div class="report-ready">
+                <h3>Report Ready for Collection!</h3>
+                <p style="margin: 0; font-size: 16px;">Your test results have been processed and verified.</p>
+            </div>
+            
+            <div class="report-details">
+                <h3>Report Information</h3>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Patient Name</div>
+                        <div class="detail-value">{{ values.patient_name }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Report ID</div>
+                        <div class="detail-value">#{{ values.report_id }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Doctor Name</div>
+                        <div class="detail-value">Dr. {{ values.doctor_name }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Doctor Email</div>
+                        <div class="detail-value">{{ values.doctor_email }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Collection Deadline</div>
+                        <div class="detail-value">{{ values.delivery_date }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Report Status</div>
+                        <div class="detail-value">
+                            <span style="background: #d4edda; color: #155724; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 600;">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="collection-info">
+                <h4>Collection Instructions</h4>
+                <ul>
+                    <li>Please collect your report by <strong>{{ values.delivery_date }}</strong></li>
+                    <li>Bring a valid photo ID for verification</li>
+                    <li>Collection hours: Monday to Saturday, 9:00 AM - 6:00 PM</li>
+                    <li>Reports can also be collected by authorized family members with proper documentation</li>
+                </ul>
+            </div>
+            
+            {% if values.tests %}
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 25px 0; border-left: 4px solid #4facfe;">
+                <h3 style="color: #2c3e50; margin-bottom: 20px; font-size: 18px; display: flex; align-items: center;">
+                    <span style="margin-right: 10px;">🧪</span>Test Results
+                </h3>
+                <div style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    {% for test in values.tests %}
+                    <div style="padding: 15px 0; border-bottom: 1px solid #e9ecef;">
+                        <div style="font-weight: 600; color: #2c3e50; margin-bottom: 10px; font-size: 16px;">{{ test.test_name }}</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
+                            <div>
+                                <div style="font-size: 12px; color: #6c757d; margin-bottom: 3px;">Result</div>
+                                <div style="font-weight: 500; color: #495057;">{{ test.result }}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 12px; color: #6c757d; margin-bottom: 3px;">Unit</div>
+                                <div style="font-weight: 500; color: #495057;">{{ test.unit }}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 12px; color: #6c757d; margin-bottom: 3px;">Reference Value</div>
+                                <div style="font-weight: 500; color: #495057;">{{ test.referred_value }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if values.specimens %}
+            <div style="background: #fff3cd; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #ffc107;">
+                <h4 style="color: #856404; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center;">
+                    <span style="margin-right: 8px;">🧬</span>Specimen Information
+                </h4>
+                {% for specimen in values.specimens %}
+                <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; font-size: 14px;">
+                        <div>
+                            <div style="font-weight: 600; color: #856404;">Specimen Type</div>
+                            <div>{{ specimen.specimen_type }}</div>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: #856404;">Collection Date</div>
+                            <div>{{ specimen.collection_date }}</div>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: #856404;">Receiving Date</div>
+                            <div>{{ specimen.receiving_date }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if values.other_information %}
+            <div style="background: #e8f4fd; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2196f3;">
+                <h4 style="color: #1565c0; margin-bottom: 10px; font-size: 16px;">📝 Additional Information</h4>
+                <p style="color: #1565c0; margin: 0; font-size: 14px;">{{ values.other_information }}</p>
+            </div>
+            {% endif %}
+            
+            <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2196f3;">
+                <p style="color: #1565c0; margin: 0; font-size: 14px;">
+                    <strong>📞 Need Help?</strong> If you have any questions about your report or need assistance, please contact our laboratory team at the reception desk or call our helpline.
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <p style="color: #6c757d; font-size: 14px;">Thank you for choosing CarePoint Laboratory for your diagnostic needs.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>CarePoint Laboratory</strong></p>
+            <p>Accurate Results, Trusted Care</p>
+            <p style="font-size: 12px; opacity: 0.8;">This is an automated notification. Please do not reply to this email.</p>
+        </div>
+    </div>
+</body>
+</html>
+

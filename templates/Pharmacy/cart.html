@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Care Point - Cart</title>
+  <!-- Favicons -->
+  <link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/open-iconic-bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/animate.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/owl.carousel.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/owl.theme.default.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/magnific-popup.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/aos.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/ionicons.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/bootstrap-datepicker.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/jquery.timepicker.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/flaticon.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/icomoon.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System/pharmacy_assets/css/style.css'%}">
+  
+  <style>
+    .glass-card {
+      background: rgba(255,255,255,0.15) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+    .glass-navbar {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(50px);
+      -webkit-backdrop-filter: blur(50px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .glass-footer {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(15px);
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-glass {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-glass:hover {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      transform: translateY(-2px);
+    }
+    body {
+      color: black;
+    }
+    * {
+      color: black !important;
+    }
+    h1, h2, h3, h4, h5, h6, p, span, a, label {
+      color: black !important;
+    }
+    .navbar-nav {
+      position: absolute !important;
+      right: 20px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    .navbar-brand {
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+    .table {
+      background: transparent !important;
+    }
+    .table th, .table td {
+      background: transparent !important;
+      color: black !important;
+      border-color: rgba(255,255,255,0.2) !important;
+    }
+    .thead-primary th {
+      background: rgba(255,255,255,0.2) !important;
+      color: black !important;
+    }
+    .table tbody {
+      background: transparent !important;
+    }
+    .table tbody tr {
+      background: transparent !important;
+    }
+    .table tbody tr td {
+      background: transparent !important;
+      border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    }
+    ::-webkit-scrollbar {
+      width: 3px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+    <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+  </video>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar glass-navbar ftco-navbar-light" id="ftco-navbar" style="min-height: 80px; padding: 15px 0;">
+    <div class="container">
+      <a class="navbar-brand" href="" style="color: white; font-weight: 800;">Care Point<small style="color: white;"> Medical Shop</small></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav" style="justify-content: flex-end;">
+        <ul class="navbar-nav" style="display: flex; align-items: center; gap: 15px;">
+          <li class="nav-item"><a href="{% url 'patient-dashboard'%}" class="nav-link" style="color: white;">Dashboard</a></li>
+          <li class="nav-item"><a href="{% url 'pharmacy_shop' %}" class="nav-link" style="color: white;">Shop</a></li>
+          <li class="nav-item cart">
+            <a href="{% url 'cart' %}" class="nav-link" style="color: white;">
+              <span class="icon icon-shopping_cart"></span>
+              <span class="bag d-flex justify-content-center align-items-center" style="background: linear-gradient(45deg, #6c5ce7, #74b9ff);">
+                <small>{{order.count_cart_items}}</small>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="ftco-section ftco-cart" style="padding-top: 120px;">
+    <div style="max-width: 95%; margin: 0 auto; padding: 0 20px;">
+      <h2 style="color: white; text-align: center; font-weight: 800; margin-bottom: 30px;">Shopping Cart</h2>
+      {% include 'message.html' %}
+      <div style="display: flex; gap: 30px; align-items: flex-start;">
+        <div style="flex: 1; max-width: 70%;">
+          <div class="glass-card" style="padding: 30px; width: 100%;">
+            <div class="cart-list">
+              <table class="table" style="width: 100%;">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>&nbsp;</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for cart in carts %} 
+                  <tr class="text-center">
+                    <td class="product-remove"><a href="{% url 'remove-item' pk=cart.item.pk %}"><span class="icon-close" style="color: red;"></span></a></td>
+                    <td class="product-name">
+                      <h3 style="color: white;">{{ cart.item.name }}</h3>
+                      <p style="color: white;">{{ cart.item.description}}</p>
+                    </td>
+                    <td class="price" style="color: white;">₹{{ cart.item.price }}</td>
+                    <td>
+                      <div style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <a href="{% url 'decrease-item' pk=cart.item.pk %}">
+                          <button type="button" class="btn btn-glass" style="width: 30px; height: 30px; padding: 0; display: flex; align-items: center; justify-content: center;">
+                            <i class="icon-minus"></i>
+                          </button>
+                        </a>
+                        <input type="text" value="{{ cart.quantity }}" min="1" max="100" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; text-align: center; width: 50px; height: 30px; border-radius: 5px;">
+                        <a href="{% url 'increase-item' pk=cart.item.pk %}">
+                          <button type="button" class="btn btn-glass" style="width: 30px; height: 30px; padding: 0; display: flex; align-items: center; justify-content: center;">
+                            <i class="icon-plus"></i>
+                          </button>
+                        </a>
+                      </div>
+                    </td>
+                    <td class="total" style="color: white;">₹{{ cart.get_total }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div style="flex: 0 0 300px; margin-left: auto;">
+          <div class="glass-card" style="padding: 30px; width: 100%;">
+            <h3 style="color: white; font-weight: 700; margin-bottom: 20px;">Cart Totals</h3>
+            <p class="d-flex justify-content-between" style="color: white;">
+              <span>Subtotal</span>
+              <span>₹{{ order.get_totals | floatformat:2 }}</span>
+            </p>
+            <p class="d-flex justify-content-between" style="color: white;">
+              <span>Delivery</span>
+              <span>₹40.00</span>
+            </p>
+            <p class="d-flex justify-content-between" style="color: white;">
+              <span>Discount</span>
+              <span>₹0.00</span>
+            </p>
+            <hr style="border-color: rgba(255,255,255,0.3);">
+            <p class="d-flex justify-content-between total-price" style="color: white; font-weight: 700; font-size: 1.2rem;">
+              <span>Total</span>
+              <span>₹{{ order.final_bill | floatformat:2 }}</span>
+            </p>
+            <p class="text-center" style="margin-top: 30px;">
+              <a href="{% url 'ssl-payment-request-medicine' pk=order.user.patient.patient_id id=order.id %}" class="btn-glass" style="padding: 15px 30px; text-decoration: none; display: inline-block;">Proceed to Checkout</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/aos.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/scrollax.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/google-map.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/main.js' %}"></script>
+
+  {% if messages %}
+  <script>
+      {% for message in messages %}
+          $(document).ready(function () {
+              $('.toast').toast('show');
+          });
+      {% endfor %}
+  </script>
+  {% endif %}
+
+  <script>
+    $(document).ready(function() {
+      // Animate glass cards on load
+      $('.glass-card').css('opacity', '0').animate({opacity: 1}, 800);
+    });
+  </script>
+
+</body>
+</html>

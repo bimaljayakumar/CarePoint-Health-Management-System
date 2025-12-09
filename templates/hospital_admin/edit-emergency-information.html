@@ -1,0 +1,220 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Care Point - Edit Emergency Information</title>
+
+    	<!-- Favicon -->
+
+    	<link rel="shortcut icon" type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"/>
+
+    <style>
+      body {
+        background: rgba(0,0,0,0.3);
+        min-height: 100vh;
+        position: relative;
+      }
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+      }
+      .main-wrapper {
+        background: transparent;
+      }
+      .page-wrapper {
+        background: transparent;
+      }
+      .content {
+        background: transparent;
+      }
+      .sidebar {
+        background: transparent;
+      }
+      * {
+        background-color: transparent !important;
+      }
+      .header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+      }
+      label, .breadcrumb-title, .breadcrumb-item a, .breadcrumb-item {
+        color: black !important;
+      }
+      .form-control {
+        background: rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: black !important;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, rgba(54, 162, 235, 0.8), rgba(54, 162, 235, 0.6)) !important;
+        border: 1px solid rgba(54, 162, 235, 0.5) !important;
+      }
+    </style>
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/bootstrap.min.css'%}"> 
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/font-awesome.min.css'%}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+		
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.css'%}"> 
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}"> 
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+    </head>
+    <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+			<header class="header">{% include 'hospital_admin/hospital-admin-navbar.html' %}</header>
+				<!-- Logo -->
+
+            
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+			<aside class="sidebar" id="sidebar">
+				{% include 'hospital_admin/hospital-admin-sidebar.html' %} </aside>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+
+                <div class="content container-fluid">
+
+<!-- Page Header -->
+			<div class="breadcrumb-glass" style="text-align: center;">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Edit Hospital Emergency Information</h2>
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+								<li class="breadcrumb-item"><a href="#" style="color: black;">Home</a></li>
+								<li class="breadcrumb-item active" style="color: black;">Edit Hospital Information</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Header -->
+			
+			<!-- Page Content -->
+			<div class="call-content-full">
+				<div class="container-lg">
+					<div class="row justify-content-center">
+						<div class="col-md-8 col-lg-6">
+							<div class="card">
+								<div class="card-body">
+
+								<div class="col-12 col-md-12">
+												<div class="form-group">
+													<div class="change-avatar">
+														<div class="profile-img">
+															<img src="{{hospital.featured_image.url}}" width="225 px" alt="User Image">
+														</div>
+													</div>
+												</div>
+											</div>
+									
+									<!-- Profile Settings Form -->
+									<form action="{% url 'edit-emergency-information' pk=hospital.hospital_id  %}" method="POST" enctype="multipart/form-data">
+										{% csrf_token %}
+										<div class="row form-row">
+
+											{% for field in form %}
+											<div class="col-12 col-md-6">
+												<div class="form-group">
+													<label>{{field.label}}</label>
+													{{field}}{{field.errors}}
+												</div>
+											</div>
+											{% endfor %}
+
+		
+										</div>
+										<div class="submit-section">
+											<button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+										</div>
+									</form>
+									<!-- /Profile Settings Form -->
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+
+					
+
+
+
+					
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+        <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/jquery.dataTables.min.js'%}"></script> 
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+</html>

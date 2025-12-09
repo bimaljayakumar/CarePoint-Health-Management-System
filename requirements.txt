@@ -1,0 +1,6 @@
+# CarePoint Health System - Requirements
+# DEMO VERSION - Dependencies list removed
+# Contact: Bimal Jayakumar (bimaljayakumar18@gmail.com)
+
+# All package dependencies removed
+# For complete requirements file, contact: bimaljayakumar18@gmail.com

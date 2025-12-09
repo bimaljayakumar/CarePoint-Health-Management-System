@@ -1,0 +1,112 @@
+{% load static %}
+
+<div class="profile-sidebar">
+
+    <div class="profile-info-widget" style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(15px) !important; border-radius: 15px !important; border: 1px solid rgba(255,255,255,0.2) !important; display: flex !important; align-items: center !important; padding: 20px !important;">
+      <a href="#" class="booking-doc-img" style="margin-right: 15px !important;">
+        <img
+          src="{{ doctor.featured_image.url }}"
+          alt="User Image"
+        />
+      </a>
+      <div class="profile-det-info">
+        <h3>{{ doctor.name }}</h3>
+
+        <div class="patient-details">
+          <h5 class="mb-0">{{doctor.specialization.specialization_name}}</h5>
+        </div>
+      </div>
+    </div>
+  <div class="dashboard-widget">
+    <nav class="dashboard-menu sidebar">
+      <ul>
+        <li class="active">
+          <a href="{% url 'doctor-dashboard' %}">
+            <i class="fas fa-columns"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+        <a href="{% url 'doctor-profile' pk=doctor.doctor_id %}">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+
+
+        <li>
+          <a href="{% url 'appointments'%}">
+            <i class="fas fa-user-circle"></i>
+            <span>Appoinment</span>
+          </a>
+        </li>
+
+        
+        <li>
+          <a href="{% url 'multiple-hospital' %}">
+            <i class="fas fa-hospital"></i>
+            <span>Multiple Hospital</span>
+          </a>
+      </li>
+        <li>
+          <a href="{% url 'my-patients' %}">
+            <i class="fas fa-user-injured"></i>
+            <span>My Patients</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'doctor-test-list'%}" target="_blank">
+            <i class="fas fa-hourglass-start"></i>
+            <span>Test Information</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="invoices.html">
+            <i class="fas fa-file-invoice"></i>
+            <span>Invoices</span>
+          </a>
+        </li> -->
+        <!-- <li>
+          <a href="reviews.html">
+            <i class="fas fa-star"></i>
+            <span>Reviews</span>
+          </a>
+        </li> -->
+        <!-- <li>
+          <a href="chat-doctor.html">
+            <i class="fas fa-comments"></i>
+            <span>Message</span>
+            <small class="unread-msg">23</small>
+          </a>
+        </li> -->
+        <li>
+          <a
+            href="{% url 'doctor-profile-settings' %}"
+          >
+            <i class="fas fa-user-cog"></i>
+            <span>Profile Settings</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="social-media.html">
+            <i class="fas fa-share-alt"></i>
+            <span>Social Media</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="{% url 'doctor-change-password' pk=user.id%}">
+            <i class="fas fa-lock"></i>
+            <span>Change Password</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'doctor-logout'%}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

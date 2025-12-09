@@ -1,0 +1,220 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Care Point - Pharmacist List</title>
+
+    	<!-- Favicon -->
+
+    	<link rel="shortcut icon" type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"/>
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"> 
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+		
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"> 
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}"> 
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+    <style>
+      body {
+        background: rgba(0,0,0,0.3);
+        min-height: 100vh;
+        position: relative;
+      }
+      .card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+        backdrop-filter: blur(20px) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(255,255,255,0.25) !important;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15) !important;
+      }
+      .page-header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+      .page-title, th, td, .table-avatar a {
+        color: black !important;
+        font-weight: 700 !important;
+      }
+      .table, .dataTables_wrapper, .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_filter, .dataTables_processing, .dataTables_empty {
+        background: transparent !important;
+      }
+      .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+        color: black !important;
+        background: transparent !important;
+      }
+      .dataTables_wrapper .dataTables_length select, .dataTables_wrapper .dataTables_filter input {
+        background: rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        color: black !important;
+      }
+      .dataTables_wrapper .dataTables_paginate .paginate_button {
+        background: transparent !important;
+        color: black !important;
+      }
+      .datatable thead th {
+        background: transparent !important;
+        color: black !important;
+      }
+      .header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.25);
+      }
+      .sidebar {
+        background: transparent !important;
+      }
+      .main-wrapper, .page-wrapper, .content {
+        background: transparent;
+      }
+      * {
+        background-color: transparent !important;
+      }
+      .card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+      }
+      .dataTables_paginate {
+        display: none !important;
+      }
+      .dataTables_length {
+        display: none !important;
+      }
+      .dataTables_info {
+        display: none !important;
+      }
+    </style>
+    </head>
+    <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="main-wrapper">
+				<header class="header">{% include 'hospital_admin/hospital-admin-navbar.html' %}</header>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+				{% include 'hospital_admin/hospital-admin-sidebar.html' %} </aside>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12" style="text-align: center;">
+								<h3 class="page-title" style="color: black; font-weight: 800; font-size: 2.2rem; margin-bottom: 15px;">Pharmacists List</h3>
+								<ul class="breadcrumb" style="background: transparent; justify-content: center; margin: 0;">
+									<li class="breadcrumb-item"><a href="{% url 'admin-dashboard' %}" style="color: black; text-decoration: none;">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="javascript:(0);" style="color: black; text-decoration: none;">Users</a></li>
+									<li class="breadcrumb-item active" style="color: black;">Pharmacists</li>
+								</ul>
+								{% include 'message.html' %}
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Username</th>
+													<th>Email</th>
+													<th>Phone no.</th>
+													<th>Action</th>
+													</tr>
+													<tbody>
+														{% for p in pharmacist %}
+														<tr>
+															<td>
+																<h2 class="table-avatar">
+																	<a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{p.featured_image.url}}" alt="User Image"></a>
+																	<a href="profile.html">{{p.name}}</a>
+																</h2>
+															</td>
+															<td>{{p.username}}</td>
+															
+															<td>{{p.email}}</td>
+															
+															<td>{{p.phone_number}}</td>
+															<td>
+																<div class="table-action">
+																	<a href="{% url 'edit-pharmacist' pk=p.pharmacist_id %}" class="btn btn-rounded" style="background: transparent !important; color: black !important; border: 2px solid black !important;" onmouseover="this.style.background='transparent'; this.style.color='black'; this.style.border='2px solid black'" onmouseout="this.style.background='transparent'; this.style.color='black'; this.style.border='2px solid black'">
+																		<i class="fas fa-file-alt"></i> Edit User 
+																	</a>
+																  </div>
+															</td>
+														</tr>
+														{% endfor %}
+													</tbody>
+											</thead>
+					
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+        <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/jquery.dataTables.min.js'%}"></script> 
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+
+		{% if messages %}
+		<script>
+			{% for message in messages %}
+				$(document).ready(function () {
+					$('.toast').toast('show');
+				});
+			{% endfor %}
+		</script>
+	  {% endif %}
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+</html>

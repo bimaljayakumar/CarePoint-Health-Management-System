@@ -1,0 +1,9 @@
+{% load static %}
+
+{% for message in messages %}
+  <div class="toast notification" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="background: rgba(255,255,255,0.15) !important; backdrop-filter: blur(20px) !important; border-radius: 15px; border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4); margin-bottom: 10px;">
+    <div class="toast-body" style="color: black !important; font-weight: 600; padding: 15px;">
+      {{message|safe}}
+    </div>
+  </div>
+{% endfor %}

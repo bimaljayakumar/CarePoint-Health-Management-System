@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Care Point - Doctor Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    
+    <!-- Favicons -->
+    <link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon" />
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}" />
+    
+    <style>
+        body {
+            background: rgba(0,0,0,0.3);
+            min-height: 100vh;
+            position: relative;
+        }
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+            min-height: 600px;
+        }
+        .login-left {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(15px);
+            padding: 40px 30px;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            min-height: 600px;
+        }
+        .login-right {
+            padding: 40px 30px;
+        }
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: black;
+        }
+        .brand-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: black;
+            font-weight: 600;
+        }
+        .form-control {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 16px;
+            color: black;
+            font-weight: 600;
+        }
+        .form-control:focus {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: none;
+            color: black;
+        }
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            color: white;
+        }
+        .btn-login:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+        }
+        .btn-outline-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            border: none;
+            color: white;
+            font-weight: 700;
+        }
+        .btn-outline-primary:hover {
+            background: linear-gradient(135deg, #4ecdc4 0%, #ff6b6b 100%);
+            color: white;
+        }
+        .login-links a {
+            color: black;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .login-links a:hover {
+            color: black;
+        }
+        .divider span {
+            background: transparent;
+            padding: 0 20px;
+            color: black;
+            font-weight: 700;
+        }
+        h3, label {
+            color: black !important;
+            font-weight: 700 !important;
+        }
+    </style>
+</head>
+<body>
+<video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+  <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+</video>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="row g-0">
+                <div class="col-lg-6 login-left">
+                    <div>
+                        <h1 class="brand-title">Care Point</h1>
+                        <p class="brand-subtitle">Welcome back, Doctor. Access your dashboard to manage appointments, patients, and provide quality healthcare services.</p>
+                        <div class="mt-4">
+                            <i class="fas fa-user-md" style="font-size: 3rem; opacity: 0.3;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 login-right">
+                    <h3 class="mb-3" style="color: #2c3e50; font-weight: 700;">Doctor Login</h3>
+                    
+                    <form method="POST" action="{% url 'doctor-login' %}">
+                        {% csrf_token %}
+                        {% include 'message.html' %}
+                        
+                        <div class="mb-3">
+                            <label class="form-label" style="color: black; font-weight: 700; margin-bottom: 8px;">Username</label>
+                            <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label" style="color: black; font-weight: 700; margin-bottom: 8px;">Password</label>
+                            <div style="position: relative;">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required style="padding-right: 50px;">
+                                <button type="button" onclick="togglePassword()" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: black; font-size: 18px; cursor: pointer;">
+                                    <i class="fas fa-eye" id="eyeIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="login-links">
+                                <a href="{% url 'reset-password' %}">Forgot Password?</a>
+                            </div>
+                            <div class="login-links">
+                                <a href="{% url 'login' %}">Patient Login</a>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-login w-100 text-white mb-3">
+                            Sign In
+                        </button>
+                        
+                        <div class="divider" style="margin: 25px 0;">
+                            <span>New Doctor?</span>
+                        </div>
+                        
+                        <div class="text-center login-links mb-3">
+                            <a href="{% url 'doctor-register' %}" class="btn btn-outline-primary w-100" style="border-radius: 10px; padding: 12px;">
+                                Create Account
+                            </a>
+                        </div>
+                        
+                        <div class="text-center">
+                            <small class="login-links">
+                                <a href="{% url 'admin-login' %}">Admin Login</a> | 
+                                <a href="{% url 'hospital_home' %}">Home</a>
+                            </small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+    
+    <script>
+        function togglePassword() {
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeIcon.className = 'fas fa-eye-slash';
+            } else {
+                password.type = 'password';
+                eyeIcon.className = 'fas fa-eye';
+            }
+        }
+    </script>
+    
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+            $(document).ready(function () {
+                $('.toast').toast('show');
+            });
+        {% endfor %}
+    </script>
+    {% endif %}
+</body>
+</html>
+

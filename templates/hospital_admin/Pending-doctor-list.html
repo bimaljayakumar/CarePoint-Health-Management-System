@@ -1,0 +1,187 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Care Point - Pending Doctor List</title>
+
+    	<!-- Favicon -->
+
+    	<link rel="shortcut icon" type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"/>
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"> 
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+		
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"> 
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}">
+ 
+
+        <!-- pending doctor-list css -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/pending-doctor-list.css'%}"> 
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+    <style>
+      body {
+        background: rgba(0,0,0,0.3);
+        min-height: 100vh;
+        position: relative;
+      }
+      .appointments .appointment-list {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+        backdrop-filter: blur(20px) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(255,255,255,0.25) !important;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15) !important;
+        transition: all 0.3s ease !important;
+      }
+      .appointments .appointment-list:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.2) !important;
+      }
+      .page-header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+      .header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+      }
+      .sidebar {
+        background: transparent !important;
+      }
+      .main-wrapper, .page-wrapper, .content {
+        background: transparent;
+      }
+    </style>
+    </head>
+    <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+	
+		<!-- Main Wrapper -->
+
+		
+			
+        <div class="main-wrapper">
+            <!-- Header -->
+				<header class="header">
+                    {% include 'hospital_admin/hospital-admin-navbar.html' %}
+                </header>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+				{% include 'hospital_admin/hospital-admin-sidebar.html' %} 
+            </aside>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12" style="text-align: center;">
+								<h3 class="page-title" style="color: black; font-weight: 800; font-size: 2.2rem; margin-bottom: 15px;">Pending Doctors List</h3>
+								<ul class="breadcrumb" style="background: transparent; justify-content: center; margin: 0;">
+									<li class="breadcrumb-item"><a href="{% url 'admin-dashboard' %}" style="color: black; text-decoration: none;">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="javascript:(0);" style="color: black; text-decoration: none;">Users</a></li>
+									<li class="breadcrumb-item active" style="color: black;">Pending Doctors</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					{%for doctor in all%}
+                    <div class="appointments">
+                        <div class="appointment-list">
+                            <div class="profile-info-widget">
+                                <a href="{%url 'admin-doctor-profile' pk=doctor.doctor_id%}" class="booking-doc-img">
+                                    <img src="{{doctor.featured_image.url}}" alt="User Image">
+                                </a>
+                                <div class="profile-det-info" style="padding-left:8px">
+                                    <h3><a href="{%url 'admin-doctor-profile' pk=doctor.doctor_id%}" style="color: black; text-decoration: none;">{{doctor.name}}</a></h3>
+                                    <div class="patient-details">
+                                        <h5 style="color: black;font-size: 18px;font-weight: normal;margin-bottom: 8px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><i class="fas fa-envelope"></i> {{doctor.email}}</h5>
+                                        <h5 style="color: black;font-size: 18px;font-weight: normal;margin-bottom: 8px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><i class="fas fa-phone"></i> {{doctor.phone_number}}</h5>
+                                        <h5 style="color: black;font-size: 18px;font-weight: normal;margin-bottom: 8px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><i class="fas fa-brain"></i><span style="color:black"><b> Department:</b></span> {{doctor.department_name}}</h5>
+                                        <h5 style="color: black;font-size: 18px;font-weight: normal;margin-bottom: 8px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"><i class="fas fa-user-md"></i><span style="color:black"><b> Specialization:</b></span> {{doctor.specialization}}</h5>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-action">
+                                <a href="{% url 'admin-doctor-profile' doctor.doctor_id%}" class="btn btn-sm" style="background: rgba(23, 162, 184, 0.8); color: white; border: none; margin: 2px;">
+                                    <i class="far fa-eye"></i> View
+                                </a>
+                                <a href="{% url 'accept-doctor' pk=doctor.doctor_id%}" onclick="return confirm('Accept Doctor?');" class="btn btn-sm" style="background: rgba(40, 167, 69, 0.8); color: white; border: none; margin: 2px;">
+                                    <i class="fas fa-check"></i> Accept
+                                </a>
+                                <a href="{% url 'reject-doctor' pk=doctor.doctor_id%}" onclick="return confirm('Reject Doctor?');" class="btn btn-sm" style="background: rgba(220, 53, 69, 0.8); color: white; border: none; margin: 2px;">
+                                    <i class="fas fa-times"></i> Cancel
+                                </a>
+                            </div>
+                        </div> 
+                    </div>
+                    {% endfor %}
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        {% if all %}
+                            <p style="color: black; font-size: 16px;">Found {{ all|length }} pending doctors</p>
+                        {% else %}
+                            <p style="color: black; font-size: 16px;">No pending doctors found</p>
+                        {% endif %}
+                    </div>
+                </div>
+					
+			<!-- /Page Wrapper -->
+		
+            </div>
+        </div>
+
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+        <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/jquery.dataTables.min.js'%}"></script> 
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+</html>

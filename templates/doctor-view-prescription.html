@@ -1,0 +1,316 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Care Point - View Prescription</title>
+    <link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon" />
+
+    <style>
+      body {
+        background: rgba(0,0,0,0.3);
+        min-height: 100vh;
+        position: relative;
+      }
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+      }
+      .main-wrapper, .page-wrapper, .content {
+        background: transparent;
+      }
+      .table, thead, tbody, th, td, tr {
+        background: transparent !important;
+        color: black !important;
+      }
+      * {
+        background-color: transparent !important;
+        color: black !important;
+      }
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+      }
+      .header {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+      }
+      .breadcrumb-bar {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        margin: 30px;
+      }
+      .invoice-content {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        padding: 30px;
+      }
+      .invoice-item {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .breadcrumb-item + .breadcrumb-item::before {
+        color: black !important;
+      }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/style.css' %}">
+</head>
+<body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">{% include 'doctor-navbar.html' %}</header>
+        <!-- /Header -->
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-12" style="text-align: center;">
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb" style="justify-content: center;">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'hospital_home'%}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    View Prescription
+                                </li>
+                            </ol>
+                        </nav>
+                        <h2 class="breadcrumb-title">View Prescription</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Breadcrumb -->
+
+        <!-- Page Content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Profile Sidebar -->
+                    <div class="col-md-5 col-lg-4 col-xl-3">
+                        <div class="glass-card widget-profile pat-widget-profile">
+                            <div class="card-body">
+                                <div class="pro-widget-content">
+                                    <div class="profile-info-widget">
+                                        <a href="#" class="booking-doc-img">
+                                            <img src="{{ prescription.patient.featured_image.url }}" alt="User Image" style="border-radius: 15px; border: 2px solid rgba(255,255,255,0.3);">
+                                        </a>
+                                        <div class="profile-det-info">
+                                            <h3><a href="#" style="color: black;">{{prescription.patient.name}}</a></h3>
+                                            <div class="patient-details">
+                                                <h5 style="color: black;"><b>ID:</b> {{ prescription.patient.patient_id }}</h5>
+                                                <h5 class="mb-0" style="color: black;">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    {{ prescription.patient.address }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="patient-info">
+                                    <ul>
+                                        <li style="color: black;">Phone <span>{{prescription.patient.phone_number}}</span></li>
+                                        <li style="color: black;">Age <span>{{prescription.patient.age}}</span></li>
+                                        <li style="color: black;">Blood Group <span>{{prescription.patient.blood_group}}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Profile Sidebar -->
+
+                    <div class="col-md-7 col-lg-8 col-xl-9">
+                        <div class="invoice-content">
+                            <div class="invoice-item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="invoice-logo">
+                                            <h3 style="color: black; font-weight: 800;">Care Point</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="invoice-details" style="color: black;">
+                                            <strong>Prescription ID:</strong> {{prescription.prescription_id}} <br>
+                                            <strong>Patient ID:</strong> {{prescription.patient.patient_id}} <br>
+                                            <strong>Date:</strong> {{prescription.create_date }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Doctor & Patient Info -->
+                            <div class="invoice-item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="invoice-info">
+                                            <strong class="customer-text" style="color: black;">Doctor Information</strong>
+                                            <p class="invoice-details invoice-details-two" style="color: black;">
+                                                <b>Name:</b> {{prescription.doctor.name}} <br>
+                                                <b>Department:</b> {{prescription.doctor.department_name}}<br>
+                                                <b>Email:</b> {{prescription.doctor.email}} <br>
+                                                <b>Phone:</b> {{prescription.doctor.phone_number}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="invoice-info invoice-info2">
+                                            <strong class="customer-text" style="color: black;">Prescription To</strong>
+                                            <p class="invoice-details" style="color: black;">
+                                                <b>Name:</b> {{prescription.patient.name}}<br>
+                                                <b>Address:</b> {{prescription.patient.address}}<br>
+                                                <b>Email:</b> {{prescription.patient.email}}<br>
+                                                <b>Phone:</b> {{prescription.patient.phone_number}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Medicine Table -->
+                            <div class="invoice-item invoice-table-wrap mt-3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <h2 class="text-center mb-4" style="color: black; font-weight: 700;">Medicine</h2>
+                                            <table class="invoice-table table table-bordered" style="background: rgba(255,255,255,0.1); border-radius: 15px;">
+                                                <thead>
+                                                    <tr style="background: rgba(255,255,255,0.2);">
+                                                        <th style="color: black;">Medicine Name</th>
+                                                        <th class="text-center" style="color: black;">Quantity</th>
+                                                        <th class="text-center" style="color: black;">Frequency</th>
+                                                        <th class="text-center" style="color: black;">Duration</th>
+                                                        <th class="text-center" style="color: black;">Relation with meal</th>
+                                                        <th class="text-center" style="color: black;">Instruction</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for pm in medicines %}
+                                                    <tr>
+                                                        <td class="text-center" style="color: black;">{{pm.medicine_name}}</td>
+                                                        <td class="text-center" style="color: black;">{{pm.quantity}}</td>
+                                                        <td class="text-center" style="color: black;">{{pm.frequency}}</td>
+                                                        <td class="text-center" style="color: black;">{{pm.duration}}</td>
+                                                        <td class="text-center" style="color: black;">{{pm.relation_with_meal}}</td>
+                                                        <td class="text-center" style="color: black;">{{pm.instruction}}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Test Table -->
+                            <div class="invoice-item invoice-table-wrap mt-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2 class="text-center mb-4" style="color: black; font-weight: 700;">Test</h2>
+                                        <div class="table-responsive">
+                                            <table class="invoice-table table table-bordered" style="background: rgba(255,255,255,0.1); border-radius: 15px;">
+                                                <thead>
+                                                    <tr style="background: rgba(255,255,255,0.2);">
+                                                        <th class="text-center" style="color: black;">Test Name</th>
+                                                        <th class="text-center" style="color: black;">Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for pt in tests %}
+                                                    <tr>
+                                                        <td class="text-center" style="color: black;">{{pt.test_name}}</td>
+                                                        <td class="text-center" style="color: black;">{{pt.test_description}}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Advice/Recommendation -->
+                            <div class="invoice-item invoice-table-wrap mt-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="invoice-table table table-bordered" style="background: rgba(255,255,255,0.1); border-radius: 15px;">
+                                                <thead>
+                                                    <tr style="background: rgba(255,255,255,0.2);">
+                                                        <th><h2 class="text-center mb-4" style="color: black; font-weight: 700;">Advice/Recommendation</h2></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="color: black; padding: 20px;">{{prescription.extra_information}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Content -->
+
+        <!-- Footer -->
+        {% include 'footer.html' %}
+        <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+
+</body>
+</html>

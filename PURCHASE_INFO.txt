@@ -1,0 +1,83 @@
+================================================================================
+                    CAREPOINT HEALTH SYSTEM - DEMO VERSION
+================================================================================
+
+⚠️  IMPORTANT NOTICE  ⚠️
+
+This is a DEMO VERSION with all critical business logic removed.
+This version is NOT FUNCTIONAL and is provided for EVALUATION ONLY.
+
+================================================================================
+                         PURCHASE FULL VERSION
+================================================================================
+
+For the complete, fully functional version, please contact:
+
+    👤 Name:  Bimal Jayakumar
+    📧 Email: bimaljayakumar18@gmail.com
+
+================================================================================
+                         WHAT'S BEEN REMOVED
+================================================================================
+
+The following critical components have been completely removed:
+
+✗ All appointment management logic
+✗ Prescription creation and processing
+✗ Payment gateway integration logic
+✗ Report generation algorithms
+✗ Email notification system
+✗ Doctor approval workflows
+✗ Medicine inventory management
+✗ Lab test processing logic
+✗ Cart and checkout functionality
+✗ PDF generation logic
+✗ Search and filter algorithms
+✗ Authentication workflows
+✗ Database query optimizations
+✗ Business rule validations
+✗ And much more...
+
+================================================================================
+                      FULL VERSION FEATURES
+================================================================================
+
+The complete version includes:
+
+✓ Complete Hospital Management System
+✓ Multi-role User Management (Admin, Doctor, Patient, Lab Worker, Pharmacist)
+✓ Appointment Booking & Management
+✓ Prescription Management System
+✓ Laboratory Test Management
+✓ Report Generation & PDF Export
+✓ Pharmacy & Medicine Inventory
+✓ Payment Gateway Integration
+✓ Real-time Chat System
+✓ Email Notification System
+✓ Admin Dashboard with Analytics
+✓ Search & Filter Functionality
+✓ Responsive UI Design
+✓ Complete Documentation
+✓ Technical Support
+
+================================================================================
+                           CONTACT FOR PURCHASE
+================================================================================
+
+Email: bimaljayakumar18@gmail.com
+Name:  Bimal Jayakumar
+
+Please include in your email:
+- Your name and organization
+- Intended use case
+- Any specific requirements
+
+================================================================================
+                              COPYRIGHT
+================================================================================
+
+© Bimal Jayakumar - All Rights Reserved
+
+Unauthorized copying, distribution, or use is strictly prohibited.
+
+================================================================================

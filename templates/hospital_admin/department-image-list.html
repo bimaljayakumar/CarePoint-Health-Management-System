@@ -1,0 +1,303 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Care Point - Department List</title>
+
+    	<!-- Favicon -->
+
+    	<link rel="shortcut icon" type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"/>
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"> 
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+		
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"> 
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}"> 
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	<style>
+		body {
+			background: rgba(0,0,0,0.3);
+			min-height: 100vh;
+			position: relative;
+		}
+		.breadcrumb-glass {
+			background: rgba(255,255,255,0.1);
+			backdrop-filter: blur(15px);
+			border-radius: 15px;
+			border: 1px solid rgba(255,255,255,0.2);
+			padding: 20px;
+			margin-bottom: 30px;
+		}
+		.card {
+			background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important;
+			backdrop-filter: blur(15px) !important;
+			border-radius: 20px !important;
+			border: 1px solid rgba(255,255,255,0.2) !important;
+			box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+		}
+		.main-wrapper, .page-wrapper, .content {
+			background: transparent;
+		}
+		.table th {
+			background: rgba(255,255,255,0.1) !important;
+			backdrop-filter: blur(10px) !important;
+			color: black !important;
+			font-weight: 700 !important;
+		}
+		.table th:hover, .table tr:hover, .table td:hover {
+			background: transparent !important;
+			color: black !important;
+		}
+		.table, thead, tbody, th, td, tr {
+			background: transparent !important;
+		}
+		.btn {
+			background: rgba(255,255,255,0.15) !important;
+			backdrop-filter: blur(10px) !important;
+			border: 1px solid rgba(255,255,255,0.3) !important;
+			color: black !important;
+			border-radius: 12px !important;
+		}
+		.table td {
+			color: black !important;
+		}
+		.page-title {
+			color: black !important;
+			font-weight: 800 !important;
+		}
+		.breadcrumb a {
+			color: black !important;
+		}
+		.breadcrumb-item.active {
+			color: black !important;
+		}
+		.modal {
+			z-index: 999999 !important;
+			pointer-events: auto !important;
+			position: fixed !important;
+		}
+		.modal-dialog {
+			z-index: 999999 !important;
+			pointer-events: auto !important;
+			margin: 50px auto !important;
+		}
+		.modal-content {
+			z-index: 999999 !important;
+			pointer-events: auto !important;
+		}
+	</style>
+    </head>
+    <body>
+	<video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+		<source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+	</video>
+	
+		<!-- Main Wrapper -->
+
+		
+			<!-- Header -->
+            <div class="main-wrapper">
+				<header class="header">{% include 'hospital_admin/hospital-admin-navbar.html' %}</header>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+				{% include 'hospital_admin/hospital-admin-sidebar.html' %} </aside>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            
+			<div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+			
+					<div class="breadcrumb-glass" style="text-align: center; position: relative;">
+						<div class="row">
+							<div class="col-sm-12">
+								<h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Hospital Department</h2>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+										<li class="breadcrumb-item"><a href="{% url 'admin-dashboard' %}" style="color: black; text-decoration: none;">Dashboard</a></li>
+										<li class="breadcrumb-item active" style="color: black;">Department</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					<div class="row justify-content-center">
+						<div class="col-sm-8 col-md-6">
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Department Name</th>
+													<th>Image</th>
+													<th class="text-center">Actions</th>
+												</tr>
+											</thead>
+											<tbody>
+											{%for dep in departments%}
+												<tr>
+													
+                                                    <td>
+                                                        <h5>{{dep.hospital_department_name}}</h5>
+                                                    </td>
+													
+													<td>
+														<h2 class="table-avatar">
+															<a href="profile.html" class="avatar avatar-xl mr-2">
+																<img src="{{dep.featured_image.url}}" alt="Speciality">
+															</a>
+															<!-- class="avatar-img" -->
+															<!-- class="avatar avatar-sm mr-2" -->
+														</h2>
+													</td>
+
+                                                    
+												
+													<td class="text-center">
+														<div class="actions">
+															<button class="btn btn-sm bg-success-light" data-toggle="modal" data-target="#modal-default{{dep.hospital_department_id}}">
+																<i class="fe fe-pencil"></i> Edit
+															</button>
+															<a href="{%url 'delete-department' pk=dep.hospital_department_id%}" class="btn btn-sm bg-danger-light">
+																<i class="fe fe-trash"></i> Delete
+															</a>
+															
+														</div>
+													</td>
+													
+												</tr>
+
+											{%endfor%}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>			
+					</div>
+				</div>			
+			</div>
+        </div>
+
+		{%for dep in departments%}
+												<div class="modal fade" id="modal-default{{dep.hospital_department_id}}" aria-hidden="true" role="dialog" style="z-index: 999999 !important;">
+												<form action="{%url 'edit-department' pk=dep.hospital_department_id%}" method="POST"
+													enctype="multipart/form-data">
+													{% csrf_token %}
+													<div class="modal-dialog modal-dialog-centered" role="document" style="z-index: 999999 !important;">
+														<div class="modal-content" style="z-index: 999999 !important; background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(20px) !important; border-radius: 15px !important; border: 1px solid rgba(255,255,255,0.2) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;">
+															<div class="modal-header">
+																<h5 class="modal-title">Edit Department Name</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																
+																	<div class="row form-row">
+																		<div class="col-12 col-sm-6">
+																			<div class="form-group">
+																				<label>Department Name</label>
+																				<input type="text" class="form-control" name="department_name" value={{dep.hospital_department_name}} style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.3) !important; color: black !important;">
+																				
+																			</div>
+																		</div>
+																		
+																		<div class="col-12 col-sm-6">
+																			<div class="form-group">
+																				<label>Image</label>
+																				<input type="file" name="featured_image" class="form-control" style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.3) !important; color: black !important;">
+																			</div>
+																		</div>
+																		
+																	</div>
+																	<button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+																
+															</div>
+														</div>
+													</div>
+												</form>
+												</div>
+										{%endfor%}
+
+		
+	
+        {% comment %} <div class="modal fade" id="edit_specialities_details" aria-hidden="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Department Name</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row form-row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Department Name</label>
+                                        <input type="text" class="form-control" value="{{dep.hospital_department_name}}">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input type="file"  class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+	
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+        <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/jquery.dataTables.min.js'%}"></script> 
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+		
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+</html>

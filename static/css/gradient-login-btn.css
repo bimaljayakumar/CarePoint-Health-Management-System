@@ -1,0 +1,6 @@
+/* Custom gradient hover effect for login/signup button */
+.header-login:hover {
+    background: linear-gradient(135deg, #09e5ab 0%, #20c0f3 100%) !important;
+    border-color: #09e5ab !important;
+    color: #000000 !important;
+}

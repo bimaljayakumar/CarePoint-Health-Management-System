@@ -1,0 +1,61 @@
+<style>
+.sidebar {
+    background: transparent !important;
+}
+.sidebar-inner {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.slimScrollDiv {
+    background: transparent !important;
+}
+.sidebar-menu {
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)) !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+    margin: 350px 10px 20px 10px !important;
+    padding: 20px !important;
+}
+.sidebar-menu ul li a {
+    color: black !important;
+    background: rgba(255,255,255,0.1) !important;
+    border-radius: 12px !important;
+    margin-bottom: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+.sidebar-menu ul li.active a,
+.sidebar-menu ul li a:hover {
+    background: linear-gradient(45deg, #4facfe, #00f2fe) !important;
+    color: black !important;
+    transform: translateX(5px) !important;
+}
+.menu-title span {
+    color: black !important;
+    font-weight: 700 !important;
+}
+.sidebar-menu ul li ul li a {
+    background: rgba(255,255,255,0.05) !important;
+    margin-left: 15px !important;
+}
+</style>
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title"> 
+                    <span>Menu</span>
+                </li>
+                <li class=""> 
+                    <a href="{%url 'pharmacist-dashboard' %}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                </li>
+                <li><a href="{%url 'medicine-list'%}"><i class="fe fe-document"></i> <span>View Medicine</span></a></li>
+                <li><a href="{% url 'add-medicine' %}"><i class="fe fe-edit"></i> <span> Add Medicine</span></a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>

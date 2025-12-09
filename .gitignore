@@ -1,0 +1,32 @@
+# CarePoint Health System - Git Ignore
+# Contact: Bimal Jayakumar (bimaljayakumar18@gmail.com)
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Media
+media/
+*.jpg
+*.png
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# All sensitive data excluded
+# For complete project: bimaljayakumar18@gmail.com

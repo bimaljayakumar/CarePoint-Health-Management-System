@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>CarePoint - Report</title>
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'HealthStack-System/css/Normal/style.css' %}" />
+  </head>
+  <body style="color: black;">
+    <div class="main-wrapper">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+			<div class="row" style="font-size:14px;">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="invoice-content">
+						<div class="invoice-item" style="margin-bottom: 30px;">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="invoice-logo">
+										<h1 style="color: black; margin-bottom: 20px;">CarePoint</h1>
+									</div>
+								</div>
+								<div class="col-md-6" style="float: right; width: 50%;">
+									<p class="invoice-details" style="color: black; line-height: 1.8;">
+										<strong>Report ID:</strong> {{report.report_id}} <br>
+										<strong>Patient ID:</strong> {{report.patient.patient_id}} <br>
+										<strong>Date:</strong> {{report.delivery_date}}
+									</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="invoice-item" style="margin-bottom: 25px;">
+							<div class="row">
+								<div class="col-6">
+									<div class="invoice-info">
+										<strong class="customer-text" style="color: black; margin-bottom: 10px; display: block;">Doctor Information:</strong>
+										<p class="invoice-details invoice-details-two" style="color: black; line-height: 1.6;">
+											<b>Name: </b>{{report.doctor.name}} <br>
+											<b>Department: </b>{{report.doctor.department_name}}<br>
+											<b>Email: </b>{{report.doctor.email}} <br>
+										</p>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="invoice-info invoice-info2">
+										<strong class="customer-text" style="color: black; margin-bottom: 10px; display: block;">Patient Information:</strong>
+										<p class="invoice-details" style="color: black; line-height: 1.6;">
+											<b>Name: </b>{{report.patient.name}}<br>
+											<b>Age: </b>{{report.patient.age}}<br>
+											<b>Blood Group: </b>{{report.patient.blood_group}}<br>
+											<b>Email: </b>{{report.patient.email}}<br>
+											<b>Phone: </b>{{report.patient.phone_number}}
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="invoice-item invoice-table-wrap" style="margin-top: 20px;">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="table-responsive">
+										<h2 class="text-center" style="color: black; margin-bottom: 4px; text-align: center;"><b>Specimen Information</b></h2>
+										
+										<table class="invoice-table table table-bordered" style="text-align:center; border: 2px solid black;">
+											<tr style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+												<th style="color: black; border: 2px solid black; padding: 10px;">Specimen Information</th>
+												<th style="color: black; border: 2px solid black; padding: 10px;">Specimen ID</th>
+												<th style="color: black; border: 2px solid black; padding: 10px;">Collection Date/Time</th>
+												<th style="color: black; border: 2px solid black; padding: 10px;">Receiving Date/Time</th>
+											</tr>
+											{% for s in specimen %}
+											<tr style="vertical-align: center; height: 50px;">
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{s.specimen_type}}</td>
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{s.specimen_id}}</td>
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{s.collection_date}}</td>
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{s.receiving_date}}</td>
+											</tr>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="invoice-item invoice-table-wrap" style="margin-top: 25px;">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="table-responsive">
+										<h2 class="text-center" style="margin-bottom: 4px; color: black; text-align: center;"><b>Test Results</b></h2>
+										
+										<table class="invoice-table table table-bordered" style="text-align: center; border: 2px solid black;">
+											<tr style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+												<th style="color: black; border: 2px solid black; padding: 10px;">Test Name</th>
+												<th style="color: black; border: 2px solid black; padding: 10px;">Result</th>
+												<th style="color: black; border: 2px solid black; padding: 10px;">Unit</th>
+												<th style="color: black; border: 2px solid black; padding: 10px;">Referred Value</th>
+											</tr>
+											{% for t in test %}
+											<tr style="vertical-align: center;height: 50px;">		
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{t.test_name}}</td>
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{t.result}}</td>
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{t.unit}}</td>
+												<td style="color: black; border: 2px solid black; padding: 8px;">{{t.referred_value}}</td>
+											</tr>
+											{% endfor %}
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="invoice-item invoice-table-wrap" style="margin-top: 30px;">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="table-responsive">
+										<table class="invoice-table table table-bordered">
+											<thead>
+												<tr>
+													<th><h2 class="text-center mb-4" style="color: black; text-align: center; margin-bottom: 4px;"><b>Other Information</b></h2></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td style="color: black;">{{report.other_information}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

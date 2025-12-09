@@ -1,0 +1,598 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Care Point - Healthcare Management System</title>
+
+    <!-- Favicons -->
+    <link
+      type="image/x-icon"
+      href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"
+      rel="icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"
+    />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"
+    />
+
+    <!-- Main CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/style.css' %}"
+    />
+
+    <style>
+      .gradient-bg {
+        background: rgba(0,0,0,0.3);
+        min-height: 100vh;
+        position: relative;
+      }
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      }
+      .sidebar-glass {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      }
+      .nav-tabs .nav-link {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: black;
+        border-radius: 15px 15px 0 0;
+        margin-right: 5px;
+        font-weight: 600;
+      }
+      .nav-tabs .nav-link.active {
+        background: linear-gradient(45deg, #4facfe, #00f2fe);
+        color: black !important;
+        border-color: rgba(255,255,255,0.3);
+      }
+      .table-glass {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .badge-glass {
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
+      }
+      .btn-glass {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: black;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .btn-glass:hover {
+        background: rgba(255,255,255,0.25);
+        transform: translateY(-2px);
+        color: black;
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .profile-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      }
+      .sidebar-menu li a {
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+        margin-bottom: 8px;
+        color: black;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .sidebar-menu li.active a,
+      .sidebar-menu li a:hover {
+        background: linear-gradient(45deg, #4facfe, #00f2fe);
+        color: black !important;
+        transform: translateX(5px);
+      }
+      html, body {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+      }
+      html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="header">{% include 'patient_navbar.html' %}</header>
+      <!-- /Header -->
+
+      <!-- Breadcrumb -->
+      <div style="padding: 30px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-glass" style="text-align: center;">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+                    <li class="breadcrumb-item">
+                      <a href="{% url 'patient-dashboard' %}" style="color: black; text-decoration: none;">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page" style="color: black;">
+                      Patient Dashboard
+                    </li>
+                  </ol>
+                </nav>
+                <h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Patient Dashboard</h2>
+                {% include 'message.html' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Breadcrumb -->
+      
+      <!-- Page Content -->
+      <div style="padding: 0 0 50px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Profile Sidebar -->
+            <div class="col-md-5 col-lg-4 col-xl-3">
+              <div class="sidebar-glass" style="padding: 30px; position: sticky; top: 100px;">
+                <!-- Profile Section -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                  <img src="{{ patient.featured_image.url }}" alt="User Image" class="profile-avatar" />
+                  <h3 style="color: black; font-weight: 700; margin: 15px 0 5px 0;">{{patient.name}}</h3>
+                  <div style="color: black; font-size: 0.9rem; margin-bottom: 15px;">
+                    <div style="margin-bottom: 8px;">
+                      <i class="fas fa-birthday-cake" style="margin-right: 8px; color: black;"></i>
+                      {{ patient.dob }}
+                    </div>
+                    <div>
+                      <i class="fas fa-map-marker-alt" style="margin-right: 8px; color: black;"></i>
+                      {{ patient.address }}
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="sidebar-menu">
+                  <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li class="active">
+                      <a href="{% url 'patient-dashboard' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-columns" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'search' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-user-md" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Search Doctor</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'pharmacy_shop' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-capsules" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Medical Shop</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'multiple-hospital' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-hospital" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Multiple Hospital</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'doctor-test-list'%}" target="_blank" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-hourglass-start" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Test Information</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'profile-settings' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-user-cog" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Profile Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'change-password' pk=user.id%}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-lock" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Change Password</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'logout' %}" style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none;">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 10px; width: 20px;"></i>
+                        <span>Logout</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <!-- / Profile Sidebar -->
+
+            <div class="col-md-7 col-lg-8 col-xl-9">
+              <div class="glass-card" style="padding: 30px;">
+                <!-- Tab Menu -->
+                <nav class="mb-4">
+                  <ul class="nav nav-tabs nav-justified" style="border: none;">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#pat_appointments" data-toggle="tab">
+                        <i class="fas fa-calendar-check" style="margin-right: 8px;"></i>
+                        Appointments
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#pat_prescriptions" data-toggle="tab">
+                        <i class="fas fa-prescription-bottle-alt" style="margin-right: 8px;"></i>
+                        Prescriptions
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#pat_medical_records" data-toggle="tab">
+                        <i class="fas fa-file-medical" style="margin-right: 8px;"></i>
+                        Medical Records
+                      </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link" href="#pat_billing" data-toggle="tab">
+                        <i class="fas fa-receipt" style="margin-right: 8px;"></i>
+                        Billing
+                      </a>
+                    </li> -->
+                  </ul>
+                </nav>
+                <!-- /Tab Menu -->
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                  <!-- Appointment Tab -->
+                  <div id="pat_appointments" class="tab-pane fade show active">
+                    <div class="table-glass" style="padding: 25px;">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0" style="background: transparent;">
+                          <thead>
+                            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2);">
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Doctor</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Appt Date</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Type</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Amount</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Status</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Payment Status</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for appointment in appointments %}
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                              <td style="padding: 15px 10px;">
+                                <div style="display: flex; align-items: center;">
+                                  <img
+                                    src="{{ appointment.doctor.featured_image.url }}"
+                                    alt="Doctor"
+                                    style="width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; border: 2px solid rgba(255,255,255,0.3);"
+                                  />
+                                  <div>
+                                    <div style="color: black; font-weight: 600; font-size: 0.95rem;">{{ appointment.doctor.name }}</div>
+                                    <div style="color: black; font-size: 0.8rem; opacity: 0.8;">{{appointment.doctor.department_name}}</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td style="padding: 15px 10px;">
+                                <div style="color: black; font-weight: 600;">{{appointment.date}}</div>
+                                <div style="color: black; font-size: 0.85rem;">{{appointment.time}}</div>
+                              </td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 500;">{{appointment.appointment_type}}</td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 600;">
+                                {% if appointment.appointment_type == 'checkup' %}
+                                ₹{{appointment.doctor.consultation_fee}}
+                                {% else %}
+                                ₹{{appointment.doctor.report_fee}}
+                                {% endif %}
+                              </td>
+                              <td style="padding: 15px 10px;">
+                                {% if appointment.appointment_status == 'pending' %}
+                                <span class="badge badge-glass" style="background: rgba(255,193,7,0.2); color: black; padding: 6px 12px; border-radius: 12px;">Pending</span>
+                                {% endif %}
+                                {% if appointment.appointment_status == 'confirmed' %}
+                                <span class="badge badge-glass" style="background: rgba(40,167,69,0.2); color: black; padding: 6px 12px; border-radius: 12px;">Confirmed</span>
+                                {% endif %}
+                                {% if appointment.appointment_status == 'cancelled' %}
+                                <span class="badge badge-glass" style="background: rgba(220,53,69,0.2); color: black; padding: 6px 12px; border-radius: 12px;">Cancelled</span>
+                                {% endif %}
+                              </td>
+                              <td style="padding: 15px 10px;">
+                                {% if appointment.payment_status == 'pending' %}
+                                <span class="badge badge-glass" style="background: rgba(255,193,7,0.2); color: black; padding: 6px 12px; border-radius: 12px;">Pending</span>
+                                {% endif %}
+                                {% if appointment.payment_status == 'VALID' %}
+                                <span class="badge badge-glass" style="background: rgba(40,167,69,0.2); color: black; padding: 6px 12px; border-radius: 12px;">Paid</span>
+                                {% endif %}
+                              </td>
+                              <td style="padding: 15px 10px;">
+                                {% if appointment.payment_status == 'VALID' %}
+                                <span class="badge badge-glass" style="background: rgba(40,167,69,0.2); color: black; padding: 6px 12px; border-radius: 12px;">
+                                  <i class="fas fa-check" style="margin-right: 6px;"></i>
+                                  Paid
+                                </span>
+                                {% else %}
+                                <a
+                                  href="{% url 'demo-payment-appointment' pk=appointment.patient.patient_id id=appointment.id %}"
+                                  class="btn-glass"
+                                  style="padding: 8px 16px; text-decoration: none; display: inline-flex; align-items: center;"
+                                >
+                                  <i class="fas fa-dollar-sign" style="margin-right: 6px;"></i>
+                                  Pay Now
+                                </a>
+                                {% endif %}
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Appointment Tab -->
+
+                  <!-- Prescription Tab -->
+                  <div class="tab-pane fade" id="pat_prescriptions">
+                    <div class="table-glass" style="padding: 25px;">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0" style="background: transparent;">
+                          <thead>
+                            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2);">
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Prescription ID</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Doctor Name</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Doctor</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for prescription in prescription %}
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                              <td style="padding: 15px 10px; color: black; font-weight: 600;">
+                                {{prescription.prescription_id}}
+                              </td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 500;">{{prescription.doctor.name }}</td>
+                              <td style="padding: 15px 10px;">
+                                <div style="display: flex; align-items: center;">
+                                  <img
+                                    src="{{prescription.doctor.featured_image.url }}"
+                                    alt="Doctor"
+                                    style="width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; border: 2px solid rgba(255,255,255,0.3);"
+                                  />
+                                  <div>
+                                    <div style="color: black; font-weight: 600; font-size: 0.95rem;">Dr. {{prescription.doctor}}</div>
+                                    <div style="color: black; font-size: 0.8rem; opacity: 0.8;">{{prescription.doctor.department_name }}</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td style="padding: 15px 10px;">
+                                <a
+                                  href="{% url 'prescription-view' pk=prescription.prescription_id%}"
+                                  class="btn-glass"
+                                  style="padding: 8px 16px; text-decoration: none; display: inline-flex; align-items: center;"
+                                >
+                                  <i class="far fa-eye" style="margin-right: 6px;"></i>
+                                  View
+                                </a>
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Prescription Tab -->
+
+                  <!-- Medical Records Tab -->
+                  <div id="pat_medical_records" class="tab-pane fade">
+                    <div class="table-glass" style="padding: 25px;">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0" style="background: transparent;">
+                          <thead>
+                            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2);">
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Report ID</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Delivery Date</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Doctor</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for report in report %}
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                              <td style="padding: 15px 10px; color: black; font-weight: 600;">
+                                {{report.report_id}}
+                              </td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 500;">{{report.delivery_date }}</td>
+                              <td style="padding: 15px 10px;">
+                                <div style="display: flex; align-items: center;">
+                                  <img
+                                    src="{{report.doctor.featured_image.url }}"
+                                    alt="Doctor"
+                                    style="width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; border: 2px solid rgba(255,255,255,0.3);"
+                                  />
+                                  <div>
+                                    <div style="color: black; font-weight: 600; font-size: 0.95rem;">Dr.{{report.doctor}}</div>
+                                    <div style="color: black; font-size: 0.8rem; opacity: 0.8;">{{report.doctor.department_name }}</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td style="padding: 15px 10px;">
+                                <div style="display: flex; gap: 8px;">
+                                  <a
+                                    href="{% url 'view-report' pk=report.report_id%}"
+                                    class="btn-glass"
+                                    style="padding: 8px 12px; text-decoration: none; display: inline-flex; align-items: center;"
+                                  >
+                                    <i class="far fa-eye" style="margin-right: 6px;"></i>
+                                    View
+                                  </a>
+                                  <a href="{% url 'delete-report' pk=report.report_id %}" onclick="return confirm('Are you sure you want to Delete?');" class="btn-glass" style="padding: 8px 12px; text-decoration: none; display: inline-flex; align-items: center; background: rgba(220,53,69,0.15);">
+                                    <i class="fas fa-trash" style="margin-right: 6px;"></i>
+                                    Delete
+                                  </a>
+                                </div>
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Medical Records Tab -->
+
+                  <!-- Billing Tab -->
+                  <!-- <div id="pat_billing" class="tab-pane fade">
+                    <div class="table-glass" style="padding: 25px;">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0" style="background: transparent;">
+                          <thead>
+                            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2);">
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Doctor</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Tranx ID</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Tranx Date</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Amount</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Card Type</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Card Issuer</th>
+                              <th style="color: black; font-weight: 700; padding: 15px 10px;">Payment Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for payment in payments %}
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                              <td style="padding: 15px 10px;">
+                                <div style="display: flex; align-items: center;">
+                                  <img
+                                    src="{{payment.appointment.doctor.featured_image.url}}"
+                                    alt="Doctor"
+                                    style="width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; border: 2px solid rgba(255,255,255,0.3);"
+                                  />
+                                  <div>
+                                    <div style="color: black; font-weight: 600; font-size: 0.95rem;">{{payment.appointment.doctor.name}}</div>
+                                    <div style="color: black; font-size: 0.8rem; opacity: 0.8;">{{payment.appointment.doctor.department}}</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 500;">{{payment.transaction_id}}</td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 500;">{{payment.transaction_date}}</td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 600;">₹{{payment.currency_amount}}</td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 500;">{{payment.card_type}}</td>
+                              <td style="padding: 15px 10px; color: black; font-weight: 500;">{{payment.card_issuer}}</td>
+                              <td style="padding: 15px 10px;">
+                                {% if payment.status == 'VALID' %}
+                                <span class="badge badge-glass" style="background: rgba(40,167,69,0.2); color: black; padding: 6px 12px; border-radius: 12px;">Success</span>
+                                {% else %}
+                                <span class="badge badge-glass" style="background: rgba(255,193,7,0.2); color: black; padding: 6px 12px; border-radius: 12px;">Pending</span>
+                                {% endif %}
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div> -->
+                  <!-- /Billing Tab -->
+                </div>
+                <!-- /Tab Content -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Content -->
+
+      <!-- Footer -->
+      {% include 'footer.html' %}
+      <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+            $(document).ready(function () {
+                $('.toast').toast('show');
+            });
+        {% endfor %}
+    </script>
+    {% endif %}
+
+    <script>
+      // Add smooth animations and interactions
+      $(document).ready(function() {
+        // Animate cards on load
+        $('.glass-card, .sidebar-glass').css('opacity', '0').animate({opacity: 1}, 800);
+        
+        // Add hover effects to table rows
+        $('tbody tr').hover(
+          function() {
+            $(this).css('background', 'rgba(255,255,255,0.05)');
+          },
+          function() {
+            $(this).css('background', 'transparent');
+          }
+        );
+        
+        // Smooth tab transitions
+        $('.nav-tabs a').on('shown.bs.tab', function (e) {
+          $($(e.target).attr('href')).hide().fadeIn(400);
+        });
+      });
+    </script>
+  </body>
+</html>

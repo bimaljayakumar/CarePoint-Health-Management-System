@@ -1,0 +1,105 @@
+{% load static %}
+
+<style>
+html, body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+</style>
+<nav class="navbar navbar-expand-lg header-nav" style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important; border-bottom: 1px solid rgba(255,255,255,0.2) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important; z-index: 9999 !important; position: relative !important;">
+  <div class="navbar-header">
+    <a id="mobile_btn" href="javascript:void(0);">
+      <span class="bar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </a>
+    <a href="{% url 'hospital_home'%}" class="navbar-brand logo">
+      <span style="font-size: 1.5rem; font-weight: 800; color: black;">Care Point</span>
+    </a>
+  </div>
+  <div class="main-menu-wrapper">
+    <div class="menu-header">
+      <a href="" class="menu-logo">
+        <span style="font-size: 1.5rem; font-weight: 800; color: #667eea;">Care Point</span>
+      </a>
+      <a id="menu_close" class="menu-close" href="javascript:void(0);">
+        <i class="fas fa-times"></i>
+      </a>
+    </div>
+    <ul class="main-nav">
+      <li>
+        <a href="{% url 'hospital_home'%}" style="color: black !important;">Home</a>
+      </li>
+
+      <li>
+        <a href="{% url 'patient-dashboard' %}" style="color: black !important;">Dashboard</a>
+      </li>
+
+      <li class="has-submenu">
+        <a href="#" style="color: black !important;">Hospital <i class="fas fa-chevron-down"></i></a>
+        <ul class="submenu" style="z-index: 10000 !important; position: absolute !important; background: white !important; box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;">
+          <li><a href="{% url 'multiple-hospital' %}" style="color: black !important;">Hospital Info</a></li>
+          <li><a href="{% url 'search' %}" style="color: black !important;">Search Doctor</a></li>
+          
+          <!-- <li><a href="#">Checkout</a></li> -->
+          <!-- <li>
+            <a href="">Booking Success</a>
+          </li> -->
+          
+          <!-- <li><a href="#">Favourites</a></li> -->
+          <!-- <li><a href="#">Chat</a></li> -->
+        </ul>
+      </li>
+
+      {% if user.is_authenticated and user.is_patient %}
+      <li>
+        <a href="{% url 'chat-home' pk=user.id %}" style="color: black !important;">Chat with Doctor</a>
+      </li>
+      {% endif %}
+
+      <li>
+        <a href="{% url 'pharmacy_shop' %}" style="color: black !important;">Medical Shop</a>
+      </li>
+      <!-- <li class="has-submenu">
+                  <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
+                  <ul class="submenu">
+                    <li><a href="voice-call.html">Voice Call</a></li>
+                    <li><a href="video-call.html">Video Call</a></li>
+                    <li><a href="search.html">Search Doctors</a></li>
+                    <li><a href="calendar.html">Calendar</a></li>
+                    <li><a href="components.html">Components</a></li>
+                    <li class="has-submenu">
+                      <a href="invoices.html">Invoices</a>
+                      <ul class="submenu">
+                        <li><a href="invoices.html">Invoices</a></li>
+                        <li><a href="invoice-view.html">Invoice View</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="blank-page.html">Starter Page</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="forgot-password.html">Forgot Password</a></li>
+                  </ul>
+                </li> -->
+    </ul>
+  </div>
+  <ul class="nav header-navbar-rht">
+    <li class="nav-item contact-item">
+      <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+      </div>
+      <div class="header-contact-detail">
+        <p class="contact-header">Contact</p>
+        <p class="contact-info-header">+91 98765 43210</p>
+      </div>
+    </li>
+
+  </ul>
+</nav>

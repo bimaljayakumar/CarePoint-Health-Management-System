@@ -1,0 +1,146 @@
+{% load static %}
+
+<style>
+.dropdown-menu {
+    background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    z-index: 999999 !important;
+    position: absolute !important;
+}
+.nav-item.dropdown {
+    z-index: 999999 !important;
+    position: relative !important;
+}
+.dropdown-item {
+    color: black !important;
+    background: transparent !important;
+}
+.dropdown-item:hover {
+    background: rgba(255,255,255,0.1) !important;
+    color: black !important;
+}
+.user-header {
+    background: transparent !important;
+    color: black !important;
+}
+.user-text h6, .user-text p {
+    color: black !important;
+}
+.top-nav-search {
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+}
+.top-nav-search form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.top-nav-search input {
+    width: 200px;
+    height: 35px;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+.top-nav-search button {
+    height: 35px;
+    width: 35px;
+    padding: 0;
+    margin-left: 5px;
+}
+html, body {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+</style>
+
+<nav class="navbar navbar-expand-lg header-nav">
+  <div class="navbar-header">
+    <a id="mobile_btn" href="javascript:void(0);">
+      <span class="bar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </a>
+    <a href="{% url 'hospital_home'%}" class="navbar-brand logo">
+      <span style="font-size: 1.5rem; font-weight: 800; color: #667eea;">Care Point</span>
+    </a>
+  </div>
+  <div class="main-menu-wrapper">
+    <div class="menu-header">
+      <a href="{% url 'hospital_home'%}" class="menu-logo">
+        <span style="font-size: 1.5rem; font-weight: 800; color: #667eea;">Care Point</span>
+      </a>
+      <a id="menu_close" class="menu-close" href="javascript:void(0);">
+        <i class="fas fa-times"></i>
+      </a>
+    </div>
+    <ul class="main-nav">
+      <li>
+        <a href="{% url 'hospital_home'%}">Home</a>
+      </li>
+
+      <li>
+        <a href="{% url 'doctor-dashboard'%}">Dashboard</a>
+      </li>
+
+      <li><a href="{% url 'multiple-hospital' %}" style="text-decoration: none;">Hospitals</a></li>
+
+
+      <li>
+        <a href="{% url 'about-us'%}">About Us</a>
+      </li>
+      
+      <li>
+        <a href="{% url 'chat-home' pk=user.id %}">Chat with Patients</a>
+      </li>
+    
+      <li class="login-link">
+        <a href="{% url 'login' %}">Login / Signup</a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Patient Search Form -->
+  <div class="top-nav-search">
+    <form action="{% url 'patient-search' pk=doctor.doctor_id %}" method="GET">
+      <input type="text" class="form-control" placeholder="Search Patient ID" name="search_query" value="{{search_query}}" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: black;">
+
+    </form>
+  </div>
+  
+  <ul class="nav header-navbar-rht">
+    <li class="nav-item contact-item">
+      <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+      </div>
+      <div class="header-contact-detail">
+        <p class="contact-header">Contact</p>
+        <p class="contact-info-header">+{{doctor.phone_number}}</p>
+      </div>
+    </li>
+    <!-- User Menu -->
+    {% if request.resolver_match.url_name == 'doctor-dashboard' or request.resolver_match.url_name == 'doctor-profile' or request.resolver_match.url_name == 'doctor-appointments' or request.resolver_match.url_name == 'patient-id' or request.resolver_match.url_name == 'multiple-hospital' or request.resolver_match.url_name == 'my-patients' or request.resolver_match.url_name == 'test-information' or request.resolver_match.url_name == 'doctor-profile-settings' or request.resolver_match.url_name == 'doctor-change-password' %}
+    <li class="nav-item logged-item">
+      <span class="user-img">
+        <img
+          class="rounded-circle"
+          src="{{ doctor.featured_image.url }}"
+          width="31"
+          alt="Darren Elder"
+        />
+      </span>
+    </li>
+    {% endif %}
+    <!-- /User Menu -->
+  </ul>
+</nav>

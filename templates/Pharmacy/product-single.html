@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Care Point - Medical Shop</title>
+  <!-- Favicons -->
+  <link type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}" rel="icon" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\open-iconic-bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\animate.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\owl.carousel.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\owl.theme.default.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\magnific-popup.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\owl.theme.default.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\aos.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\ionicons.min.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\bootstrap-datepicker.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\jquery.timepicker.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\flaticon.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\icomoon.css'%}">
+  <link rel="stylesheet" href="{% static 'HealthStack-System\pharmacy_assets\css\style.css'%}">
+  <style>
+    .glass-card {
+      background: rgba(255,255,255,0.15) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+    .glass-navbar {
+      background: rgba(255,255,255,0.1) !important;
+      backdrop-filter: blur(50px);
+      -webkit-backdrop-filter: blur(50px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-glass {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+    }
+    .btn-glass:hover {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .navbar-nav {
+      position: absolute !important;
+      right: 20px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    .navbar-brand {
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+    html, body {
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    .product-details h3 {
+      color: black !important;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .product-details .price span {
+      color: black !important;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .product-details p {
+      color: black !important;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    * {
+      color: black !important;
+    }
+    h1, h2, h3, h4, h5, h6, p, span, a, label {
+      color: black !important;
+    }
+  </style>
+</head>
+
+<body>
+  <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+    <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+  </video>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar glass-navbar ftco-navbar-light" id="ftco-navbar" style="min-height: 80px; padding: 15px 0;">
+    <div class="container">
+      <a class="navbar-brand" href="" style="color: white; font-weight: 800;">Care Point<small style="color: white;"> Medical Shop</small></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav" style="justify-content: flex-end;">
+        <ul class="navbar-nav" style="display: flex; align-items: center; gap: 15px;">
+          <li class="nav-item"><a href="{% url 'patient-dashboard'%}" class="nav-link" style="color: white;">Dashboard</a></li>
+          <li class="nav-item"><a href="{% url 'pharmacy_shop'%}" class="nav-link" style="color: white;">Shop</a></li>
+          <li class="nav-item cart">
+            <a href="{% url 'cart' %}" class="nav-link" style="color: white;">
+              <span class="icon icon-shopping_cart"></span>
+              <span class="bag d-flex justify-content-center align-items-center" style="background: linear-gradient(45deg, #6c5ce7, #74b9ff);">
+                <small>{{order.count_cart_items}}</small>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="ftco-section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="glass-card" style="padding: 40px; margin-bottom: 40px;">
+        <div class="row">
+          <div class="col-lg-6 mb-5 ftco-animate">
+            <div class="glass-card" style="padding: 20px; text-align: center;">
+              <a href="#" class="image-popup">
+                <img src="{{ medicines.featured_image.url }}" class="img-fluid"
+                  alt="Medicine Picture" style="height: 400px; width: 100%; object-fit: cover; border-radius: 15px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+            <h3>{{ medicines.name }}</h3>
+            <p class="price"><span>₹{{ medicines.price }}</span></p>
+            <p>{{medicines.description }}</p>
+            <p>This medicine is carefully selected and quality tested to ensure the best healthcare for our patients. Our pharmacy maintains the highest standards of medicine storage and handling.</p>
+            <p>Always consult with your healthcare provider before taking any medication. Follow the prescribed dosage and instructions for safe and effective treatment.</p>
+            <div class="w-100" style="margin: 30px 0;"></div>
+            <p><a href="{% url 'add-to-cart' pk=medicines.serial_number %}" class="btn-glass">Add to Cart</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+	
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#F96D00" />
+    </svg>
+  </div>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/aos.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/scrollax.min.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/google-map.js' %}"></script>
+  <script src="{% static 'HealthStack-System/pharmacy_assets/js/main.js' %}"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&amp;sensor=false"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      // Animate glass cards on load
+      $('.glass-card').css('opacity', '0').animate({opacity: 1}, 800);
+      
+      // Add hover effects to glass cards
+      $('.glass-card').hover(
+        function() {
+          $(this).css('transform', 'translateY(-5px)');
+        },
+        function() {
+          $(this).css('transform', 'translateY(0)');
+        }
+      );
+    });
+  </script>
+
+</body>
+
+</html>

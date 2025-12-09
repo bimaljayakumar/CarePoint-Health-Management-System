@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmed - CarePoint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .success-card {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 8px 25px rgba(86, 171, 47, 0.3);
+            text-align: center;
+        }
+        
+        .success-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-card h3::before {
+            content: "✅";
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .appointment-details {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .appointment-details h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .appointment-details h3::before {
+            content: "📅";
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .detail-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #56ab2f;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .detail-value {
+            color: #495057;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .status-confirmed {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        .important-info {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #56ab2f;
+        }
+        
+        .important-info h4 {
+            color: #2d5016;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .important-info p {
+            color: #2d5016;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header, .content, .footer {
+                padding: 20px;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>🏥 CarePoint System</h1>
+            <p>Appointment Confirmation</p>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">
+                Hello {{ values.name }},
+            </div>
+            
+            <p style="color: #495057; margin-bottom: 20px; font-size: 16px;">
+                Great news! Your appointment request has been <strong>accepted</strong> by Dr. {{ values.doctor_name }}. We're excited to help you with your healthcare needs.
+            </p>
+            
+            <div class="success-card">
+                <h3>Appointment Confirmed!</h3>
+                <p style="margin: 0; font-size: 16px;">Your appointment is now scheduled and confirmed.</p>
+            </div>
+            
+            <div class="appointment-details">
+                <h3>Appointment Details</h3>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Patient Name</div>
+                        <div class="detail-value">{{ values.name }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Patient ID</div>
+                        <div class="detail-value">#{{ values.serial_number }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Doctor</div>
+                        <div class="detail-value">Dr. {{ values.doctor_name }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Appointment ID</div>
+                        <div class="detail-value">#{{ values.appointment_serial_num }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Date</div>
+                        <div class="detail-value">{{ values.appointment_date }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Time</div>
+                        <div class="detail-value">{{ values.appointment_time }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">
+                            <span class="status-confirmed">{{ values.appointment_status|title }}</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Contact Email</div>
+                        <div class="detail-value">{{ values.email }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="important-info">
+                <h4>📋 Important Reminders</h4>
+                <p>• Please arrive 15 minutes before your scheduled appointment time</p>
+                <p>• Bring a valid ID and any relevant medical documents</p>
+                <p>• If you need to reschedule, please contact us at least 24 hours in advance</p>
+                <p>• You can now chat with Dr. {{ values.doctor_name }} through your patient dashboard</p>
+            </div>
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <p style="color: #6c757d; font-size: 14px;">Thank you for choosing CarePoint System for your healthcare needs.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>CarePoint System</strong></p>
+            <p>Connecting Healthcare, Empowering Lives</p>
+            <p style="font-size: 12px; opacity: 0.8;">This is an automated confirmation. Please do not reply to this email.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <!-- doccure/login.html  30 Nov 2019 04:12:20 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <title>CarePoint - Report View</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+
+    <!-- Favicons -->
+    <link
+      type="image/x-icon"
+      href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"
+      rel="icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/bootstrap.min.css' %}"
+    />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/fontawesome.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/plugins/Normal/fontawesome/css/all.min.css' %}"
+    />
+
+    <!-- Main CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'HealthStack-System/css/Normal/style.css' %}"
+    />
+
+    <style>
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      }
+      .sidebar-glass {
+        background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      }
+      .breadcrumb-glass {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .invoice-content, .invoice-item {
+        background: rgba(255,255,255,0.05) !important;
+        backdrop-filter: blur(10px) !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+        padding: 20px !important;
+        margin-bottom: 20px !important;
+      }
+      body, *, .invoice-details, .customer-text, .invoice-info p, .invoice-info strong, p, strong, b, h1, h2, h3, h4, h5, h6, td, th, .breadcrumb-item, .breadcrumb-item a, .other-info h4, .other-info p {
+        color: black !important;
+      }
+      .profile-sidebar, .profile-sidebar *, .dashboard-menu, .dashboard-menu *, .profile-info-widget, .profile-det-info {
+        border: none !important;
+        outline: none !important;
+        color: black !important;
+      }
+      .widget-profile, .dashboard-widget {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        border-radius: 15px !important;
+        border: none !important;
+        margin-bottom: 20px !important;
+      }
+      .profile-sidebar {
+        background: transparent !important;
+      }
+      .profile-sidebar, .profile-sidebar *, .dashboard-menu, .dashboard-menu *, .profile-info-widget, .profile-det-info {
+        border: none !important;
+        outline: none !important;
+      }
+    </style>
+
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	
+	</head>
+	<body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+			<header class="header">	{% if user.is_authenticated and user.is_patient %}
+                                    {% include 'patient_navbar.html' %}
+                                    {% endif %}
+				</header>
+			<!-- /Header -->
+			
+			<!-- Breadcrumb -->
+			<div style="padding: 30px 0;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-glass" style="text-align: center;">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+                    {% if user.is_authenticated and user.is_patient %}
+                    <li class="breadcrumb-item">
+                      <a href="{% url 'patient-dashboard' %}" style="color: black; text-decoration: none;">Home</a>
+                    </li>
+                    {% endif %}
+                    <li class="breadcrumb-item active" aria-current="page" style="color: black;">
+                      Report Result
+                    </li>
+                  </ol>
+                </nav>
+                <h2 style="color: black; font-weight: 600; font-size: 1.8rem; margin: 0;">Report Details</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+                         <!-- Profile Sidebar -->
+                                <div class="col-md-5 col-lg-4 col-xl-3">
+                                    <div class="sidebar-glass" style="padding: 20px; position: sticky; top: 100px;">{% include 'patient-sidebar.html' %}</div>
+                                </div>
+                            <!-- / Profile Sidebar -->
+						<div class="col-md-7 col-lg-8 col-xl-9">
+              <div class="glass-card" style="padding: 30px;">
+							<div class="invoice-content">
+								<div class="invoice-item">
+									<div class="row">
+                    
+										<div class="col-md-6">
+											<div class="invoice-logo">
+												<h2 style="color: black; font-weight: bold;">CarePoint</h2>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<p class="invoice-details">
+
+												{% for report in report %}
+												<strong>Report ID:</strong>{{report.report_id}} <br>
+												<strong>Patient ID:</strong> {{patient.patient_id }} <br>
+												<strong>Date:</strong> {{report.delivery_date}}
+											</p>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Invoice Item -->
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="invoice-info">
+												<strong class="customer-text">Doctor Information:</strong>
+                        
+												<p class="invoice-details invoice-details-two">
+
+													<b>Name: </b>{{report.doctor.name}} <br>
+													<b>Department: </b>{{report.doctor.department_name}}<br>
+													<b>Email: </b>{{report.doctor.email}} <br>
+
+												</p>
+                        
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="invoice-info invoice-info2">
+												<strong class="customer-text">Patient Information:</strong>
+												<p class="invoice-details">
+													<b>Name: </b>{{patient.name}} <br>
+													<b>Address: </b>{{report.patient.address}}<br>
+													<b>Email: </b>{{report.patient.email}} <br>
+													<b>Phone Number: </b>{{report.patient.phone_number}}<br>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="invoice-item invoice-table-wrap">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive">
+												<table class="table table-bordered text-center">
+													<thead >
+														<tr style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+															<th style="color: black;">Specimen Information</th>
+															<th style="color: black;">Specimen ID</th>
+															<th style="color: black;">Collection Date/Time</th>
+															<th style="color: black;">Receiving Date/Time</th>
+														</tr>
+														{% for s in specimen %}
+														<tr>
+														
+															<th style="border: 2px dotted;">{{s.specimen_type}}</th>
+															<th style="border: 2px dotted;">{{s.specimen_id}}</th>
+															<th style="border: 2px dotted;">{{s.collection_date}}</th>
+															<th style="border: 2px dotted;">{{s.receiving_date}}</th>
+	
+														</tr>
+														{% endfor %}
+													</tbody>
+												</table>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+
+           
+                  				<br>
+                  				<div class="invoice-item invoice-table-wrap">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive">
+												<table class="invoice-table table table-bordered text-center">
+													<thead>
+														<tr style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+															<th style="color: black;">Test Name</th>
+                              								<th style="color: black;">Result</th>
+															<th style="color: black;">Unit</th>
+                             								<th style="color: black;">Referred value</th>
+	
+														</tr>
+                            							{% for t in test %}
+                            							<tr>
+                              								<th style="border: 2px dotted;">{{t.test_name}}</th>
+                              								<th style="border: 2px dotted;">{{t.result}}</th>
+															<th style="border: 2px dotted;">{{t.unit}}</th>
+                              								<th style="border: 2px dotted;">{{t.referred_value}}</th>
+														</tr>
+														{% endfor %}
+													</tbody>
+												</table>
+
+                       
+
+                        
+
+											</div>
+										</div>
+										
+									</div>
+								</div>
+                                
+								<!-- /Invoice Item -->
+                                
+								
+								<!-- Invoice Information -->
+								<div class="other-info">
+									<h4><b>Other Information:</b></h4>
+									<p>{{report.other_information}}</p>
+                  
+
+                  <button class="btn btn-sm" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px;"> <a target="_blank" href="{% url 'pdf' pk=report.report_id %}" style="color: black; text-decoration: none;"> Download Report </a></button>
+                  {% endfor %}
+
+                  
+								</div>
+								<!-- /Invoice Information -->
+							  
+							</div>
+              </div>
+						</div>
+					</div>
+
+				</div>
+        
+
+			</div>		
+			<!-- /Page Content -->
+
+      
+      <!-- Footer -->
+      {% include 'footer.html' %}
+      <!-- /Footer -->
+      
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static 'HealthStack-System/js/Normal/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/popper.min.js' %}"></script>
+    <script src="{% static 'HealthStack-System/js/Normal/bootstrap.min.js' %}"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+    <script src="{% static 'HealthStack-System/plugins/Normal/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'HealthStack-System/Outside_assets/js/script.js' %}"></script>
+
+    <!-- Searchbar JS -->
+    <script src="{% static 'HealthStack-System/js/Normal/sidebar.js' %}"></script>
+  </body>
+
+  <!-- doccure/patient-dashboard.html  30 Nov 2019 04:12:16 GMT -->
+</html>

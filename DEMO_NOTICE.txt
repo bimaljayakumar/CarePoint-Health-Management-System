@@ -1,0 +1,80 @@
+================================================================================
+                         ⚠️  CRITICAL NOTICE  ⚠️
+================================================================================
+
+                    THIS IS A NON-FUNCTIONAL DEMO VERSION
+
+All critical files have been stripped of business logic and cannot be restored.
+
+================================================================================
+                         FILES COMPLETELY REMOVED
+================================================================================
+
+✗ All view functions (doctor, hospital, admin, pharmacy, payment)
+✗ All form validations
+✗ All URL routing patterns
+✗ All utility functions
+✗ All PDF generation logic
+✗ All signal handlers
+✗ All API serializers
+✗ All middleware logic
+✗ Payment gateway integration
+✗ Database configurations
+✗ Email configurations
+✗ Secret keys and credentials
+✗ Admin panel configurations
+✗ Model business logic
+✗ Dependencies list
+✗ Management commands
+
+================================================================================
+                    RECONSTRUCTION IS IMPOSSIBLE
+================================================================================
+
+The removed code includes:
+- Complex algorithms for appointment scheduling
+- Prescription generation workflows
+- Payment processing logic
+- Report generation algorithms
+- Email notification systems
+- Authentication mechanisms
+- Search and filter algorithms
+- PDF generation engines
+- Database query optimizations
+- Business rule validations
+- Security implementations
+- Session management
+- File upload processing
+- And hundreds of other critical functions
+
+NO AI OR HUMAN CAN RECONSTRUCT THIS FROM THE REMAINING CODE.
+
+================================================================================
+                         PURCHASE FULL VERSION
+================================================================================
+
+Contact: Bimal Jayakumar
+Email:   bimaljayakumar18@gmail.com
+
+The full version includes:
+✓ Complete source code with all business logic
+✓ All configurations and settings
+✓ Complete dependencies
+✓ Database migrations
+✓ Documentation
+✓ Technical support
+
+================================================================================
+                              COPYRIGHT
+================================================================================
+
+© Bimal Jayakumar - All Rights Reserved
+
+This demo is provided for evaluation only.
+Unauthorized use, copying, or distribution is prohibited.
+
+================================================================================
+
+Contact: bimaljayakumar18@gmail.com
+
+================================================================================

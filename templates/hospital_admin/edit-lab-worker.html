@@ -1,0 +1,261 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/doctor-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:51 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Care Point - Edit Lab Worker</title>
+
+    	<!-- Favicon -->
+
+    	<link rel="shortcut icon" type="image/x-icon" href="{% static 'HealthStack-System/images/Normal/care-point-logo.png' %}"/>
+
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/bootstrap.min.css'%}"> 
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/font-awesome.min.css'%}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/admin_assets/css/feathericon.min.css'%}">
+		
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.css'%}"> 
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'HealthStack-System/css/admin/style.css'%}"> 
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+		<style>
+			body {
+				background: rgba(0,0,0,0.3);
+				min-height: 100vh;
+				position: relative;
+			}
+			.breadcrumb-bar {
+				background: rgba(255,255,255,0.1);
+				backdrop-filter: blur(15px);
+				border-radius: 15px;
+				border: 1px solid rgba(255,255,255,0.2);
+				padding: 20px;
+				margin-bottom: 30px;
+			}
+			.card {
+				background: rgba(255,255,255,0.1) !important;
+				backdrop-filter: blur(15px) !important;
+				border-radius: 20px !important;
+				border: 1px solid rgba(255,255,255,0.2) !important;
+				box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+			}
+			.header {
+				background: rgba(255,255,255,0.1) !important;
+				backdrop-filter: blur(20px) !important;
+				border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+			}
+			.sidebar {
+				background: transparent !important;
+			}
+			.main-wrapper, .page-wrapper, .content {
+				background: transparent;
+			}
+			* {
+				color: black !important;
+			}
+			h1, h2, h3, h4, h5, h6, p, span, a, label, th, td {
+				color: black !important;
+			}
+			.form-control {
+				background: rgba(255,255,255,0.1) !important;
+				border: 1px solid rgba(255,255,255,0.3) !important;
+				color: black !important;
+			}
+			.btn {
+				background: rgba(255,255,255,0.1) !important;
+				backdrop-filter: blur(15px) !important;
+				border: 1px solid rgba(255,255,255,0.2) !important;
+				color: black !important;
+			}
+			.card-body, .table-responsive, .card-header {
+				background: transparent !important;
+				border: none !important;
+			}
+			.table-hover tbody tr:hover {
+				background: transparent !important;
+			}
+			.table-hover tbody tr:hover td {
+				background: rgba(255,255,255,0.1) !important;
+			}
+			.table {
+				background: transparent !important;
+			}
+			.table * {
+				background: transparent !important;
+				backdrop-filter: blur(15px) !important;
+				border: 1px solid rgba(255,255,255,0.2) !important;
+				border-radius: 8px !important;
+			}
+		</style>
+    </head>
+    <body>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+      <source src="{% static 'videos/background-video.mp4' %}" type="video/mp4">
+    </video>
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+			<header class="header">{% include 'hospital_admin/hospital-admin-navbar.html' %}</header>
+				<!-- Logo -->
+
+            
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+			<aside class="sidebar" id="sidebar">
+				{% include 'hospital_admin/hospital-admin-sidebar.html' %}
+			</aside>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+
+                <div class="content container-fluid">
+
+<!-- Breadcrumb -->
+			<div style="padding: 30px 0;">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<div class="breadcrumb-bar" style="text-align: center;">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb mb-2" style="background: transparent; justify-content: center;">
+										<li class="breadcrumb-item"><a href="{% url 'admin-dashboard' %}" style="color: black; text-decoration: none;">Home</a></li>
+										<li class="breadcrumb-item active" aria-current="page" style="color: black;">Edit Clinical Laboratory Technician</li>
+									</ol>
+								</nav>
+								<h2 style="color: black; font-weight: 800; font-size: 2.5rem; margin: 0;">Edit Clinical Laboratory Technician</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+
+					<div class="row">
+						<div class="col-md-7 col-lg-8 col-xl-12">
+							<div class="card">
+								<div class="card-header">
+									<!-- Profile Settings Form -->
+									<form action="{% url 'edit-lab-worker' pk=lab_worker.technician_id %}" method="POST" enctype="multipart/form-data" >
+													{% csrf_token %}
+							
+													<div class="row form-row">
+														<div class="col-12 col-md-12">
+															<div class="form-group">
+															<div class="change-avatar"></div>
+													<div class="card card-table">
+														<div class="card-body">
+														  <div class="table-responsive">
+															<table class="table table-center">
+															  <thead>
+																<tr>
+																  <th style="min-width: 100px; background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">Name</th>
+																  <th style="min-width: 100px; background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">Email</th>
+																  <th style="min-width: 100px; background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">Image</th>
+																</tr>
+															  </thead>
+															  <tbody>
+																<tr>
+																  <td style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">
+																	<input class="form-control" type="text" name="name" value="{{lab_worker.name}}">
+																  </td>
+																  <td style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">
+																	<input class="form-control" type="email" name="email" value="{{lab_worker.email}}">
+																  </td>
+																  <td style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">
+																	<input type="file" class="upload" name="featured_image">
+																  </td>
+																</tr>
+															  </tbody>
+															</table>
+														  </div>
+														</div>
+													  </div>
+													<div class="card card-table">
+														<div class="card-body">
+															<div class="table-responsive">
+																<table class="table table-center">
+																	<thead>
+																		<tr>
+																			<th style="min-width: 100px; background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">Usename</th>
+																			<th style="min-width: 100px; background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">Phone number</th>
+																			<th style="min-width: 100px; background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">Age</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">
+																				<input class="form-control" type="text" readonly value="{{lab_worker.username}}">
+																			</td>
+																			<td style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">
+																				<input class="form-control" type="text" name="phone_number" value="{{lab_worker.phone_number}}">
+																			</td>
+																			<td style="background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px) !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 8px !important;">
+																				<input class="form-control" type="text" name="age" value="{{lab_worker.age}}">
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+									
+												<div class="submit-section">
+													<button type="submit" class="btn btn-primary submit-btn" >
+														Save Changes
+													</button>
+												</div>
+												
+									</form>
+									        <!-- /Profile Settings Form -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- /Page Content -->
+
+			
+		   
+		</div>
+		<!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="{% static 'HealthStack-System/js/admin/jquery-3.2.1.min.js' %}"></script> 
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'HealthStack-System/js/admin/popper.min.js' %}"></script> 
+        <script src="{% static 'HealthStack-System/js/admin/bootstrap.min.js' %}"></script> 
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'HealthStack-System/plugins/admin/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/jquery.dataTables.min.js'%}"></script> 
+		<script src="{% static 'HealthStack-System/plugins/admin/datatables/datatables.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'HealthStack-System/js/admin/script.js' %}"></script>
+		
+	</body>
+
+</html>
