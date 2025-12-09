@@ -525,7 +525,7 @@ This is a demonstration version with restricted usage:
 - ❌ No modification
 - ✅ Evaluation purposes only
 
-See [LICENSE](LICENSE) for full terms.
+See [LICENSE.md](LICENSE.md) for full terms.
 
 ---
 
