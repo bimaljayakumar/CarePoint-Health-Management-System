@@ -563,16 +563,6 @@ Interested in the complete working project?
 
 </div>
 
-**Payment Methods:**
-
-<div align="center">
-
-![Google Pay](screenshots/GooglePay_QR.png)
-
-*Scan to pay via Google Pay/UPI*
-
-</div>
-
 **Contact:** bimaljayakumar18@gmail.com
 
 ---
