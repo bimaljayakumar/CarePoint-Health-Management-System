@@ -1,4 +1,4 @@
-# 🏥 CarePoint Health Management System
+# 🏥 CarePoint Health Management System (DEMO VERSION)
 
 <div align="center">
 
@@ -7,109 +7,366 @@
 ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)
-
-### 🚀 A Comprehensive Healthcare Management Platform
-
-*Digitizing Hospital Operations | Streamlining Medical Service Delivery*
-
-[📧 Contact for Full Version](mailto:bimaljayakumar18@gmail.com) • [🌟 Features](#-features) • [📸 Screenshots](#-screenshots) • [💼 Purchase](#-purchase-full-version)
+![Status](https://img.shields.io/badge/Status-Demo-yellow?style=for-the-badge)
 
 </div>
 
+## ⚠️ IMPORTANT NOTICE
+
+**THIS IS A DEMONSTRATION VERSION WITH LIMITED FUNCTIONALITY**
+
+Core backend features including authentication, payment processing, and database operations have been intentionally removed. This version is for **evaluation and portfolio purposes only**.
+
+### 📧 Contact for Full Project
+
+**Developer:** Bimal Jayakumar  
+**Email:** bimaljayakumar18@gmail.com  
+**GitHub:** [@bimaljayakumar](https://github.com/bimaljayakumar)
+
+💼 **Interested in the complete working project?** Contact me to purchase the full version with all features fully implemented and production-ready.
+
 ---
 
-## ⚠️ DEMO VERSION NOTICE
+## 📋 Table of Contents
 
-> **This repository contains a NON-FUNCTIONAL demonstration version.**  
-> All critical business logic, authentication systems, and core features have been removed.  
-> For the complete, production-ready system: **bimaljayakumar18@gmail.com**
+- [Overview](#overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [System Architecture](#system-architecture)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Screenshots](#screenshots)
+- [Demo Limitations](#demo-limitations)
+- [Full Version Features](#full-version-features)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 
-## 📋 Overview
+## 🌟 Overview
 
-**CarePoint Health Management System** is an enterprise-grade Django-based healthcare platform designed to revolutionize hospital operations. Built with modern web technologies, it provides a complete digital ecosystem for healthcare providers, patients, and administrative staff.
+![CarePoint Home](screenshots/127.0.0.1_8000_(HD).png)
 
-### 🎯 System Highlights
+**CarePoint Health Management System** is a comprehensive Django-based healthcare platform designed to revolutionize hospital operations and medical service delivery. This full-stack web application provides an integrated digital ecosystem for healthcare providers, patients, administrative staff, laboratory technicians, and pharmacists.
 
-- **🏥 Multi-Role Architecture**: Dedicated dashboards for 5 user types
-- **📱 Responsive Design**: Seamless experience across all devices
-- **🔒 Secure & Scalable**: Enterprise-level security implementation
-- **⚡ Real-time Operations**: Live updates and notifications
-- **💳 Payment Integration**: Secure payment gateway (SSLCommerz)
-- **📊 Analytics Dashboard**: Comprehensive reporting and insights
+**⚠️ Note:** This demo version showcases the UI/UX and frontend functionality. Backend features like authentication, payment processing, and email notifications are not functional in this version.
+
+### Mission Statement
+**"Digitizing Hospital Operations | Streamlining Medical Service Delivery"**
+
+### Key Objectives
+- Provide seamless appointment management
+- Enable digital prescription workflows
+- Facilitate laboratory test management
+- Streamline pharmacy operations
+- Centralize medical records
+- Integrate payment processing
 
 ---
 
 ## ✨ Features
 
-### 👨‍⚕️ For Doctors
-- ✅ Appointment management with calendar view
-- ✅ Digital prescription creation
-- ✅ Patient medical history access
-- ✅ Medical report generation
-- ✅ Real-time patient chat
-- ✅ Revenue analytics
+**⚠️ DEMO VERSION NOTICE:** The features listed below represent the full project design. In this demo version, only frontend UI/UX is functional. Backend operations are not implemented.
 
-### 👤 For Patients
-- ✅ Online appointment booking
-- ✅ Doctor search and filtering
-- ✅ Medical history tracking
-- ✅ Prescription downloads (PDF)
-- ✅ Online pharmacy ordering
-- ✅ Secure payment processing
+### 👨⚕️ Doctor Portal
 
-### 🏢 For Hospital Admins
-- ✅ Doctor approval workflow
-- ✅ Hospital & department management
-- ✅ Staff management (Lab, Pharmacy)
-- ✅ System analytics & reports
-- ✅ Revenue tracking
-- ✅ User management
+- **Appointment Management** - View, accept, reject appointments with calendar *(UI only in demo)*
+- **Digital Prescriptions** - Create detailed prescriptions with medicines and tests *(Not functional in demo)*
+- **Patient Records** - Access complete patient medical history *(UI only)*
+- **Medical Reports** - Generate and manage laboratory reports *(Not functional in demo)*
+- **Real-time Chat** - Communicate with patients instantly *(Not functional in demo)*
+- **Dashboard Analytics** - Revenue tracking, patient statistics *(Frontend only)*
+- **Profile Management** - Update qualifications, experience, availability *(UI only)*
+- **Schedule Management** - Set visiting hours and availability *(Frontend only)*
 
-### 🔬 For Lab Workers
-- ✅ Test order management
-- ✅ Medical report generation
-- ✅ Result upload system
-- ✅ Automated email delivery
-- ✅ Test catalog management
+### 👤 Patient Portal
 
-### 💊 For Pharmacists
-- ✅ Medicine inventory management
-- ✅ Prescription order processing
-- ✅ Stock tracking
-- ✅ Sales analytics
-- ✅ Order fulfillment
+- **Online Booking** - Book appointments with preferred doctors *(Not functional in demo)*
+- **Doctor Search** - Filter by specialization, hospital, availability *(Frontend only)*
+- **Medical History** - View all past prescriptions and reports *(UI only)*
+- **Prescription Downloads** - Download prescriptions as PDF *(Not functional in demo)*
+- **Online Pharmacy** - Order medicines with prescription validation *(Not functional in demo)*
+- **Lab Tests** - Book tests, view results, download reports *(Not functional in demo)*
+- **Payment Processing** - Secure online payments for services *(Not functional in demo)*
+- **Profile Management** - Update personal and medical information *(UI only)*
+
+### 🏢 Hospital Admin Portal
+
+- **Doctor Approval** - Review and approve doctor registrations *(Not functional in demo)*
+- **Hospital Management** - Add/edit hospitals, departments, specializations *(UI only)*
+- **Staff Management** - Manage lab workers and pharmacists *(UI only)*
+- **System Analytics** - Comprehensive reports and statistics *(Frontend only)*
+- **Revenue Tracking** - Monitor financial performance *(Not functional in demo)*
+- **User Management** - Manage all system users *(Not functional in demo)*
+- **Department Setup** - Configure hospital departments and services *(UI only)*
+- **Emergency Information** - Manage emergency contact details *(UI only)*
+
+### 🔬 Lab Worker Portal
+
+- **Test Management** - Manage laboratory test catalog *(UI only)*
+- **Order Processing** - Process test orders from prescriptions *(Not functional in demo)*
+- **Report Generation** - Create detailed medical reports *(Not functional in demo)*
+- **Result Upload** - Upload test results with specimen details *(Not functional in demo)*
+- **Email Delivery** - Automated report delivery to patients *(Not functional in demo)*
+- **Patient Management** - View patient test history *(UI only)*
+- **Dashboard** - Track pending and completed tests *(Frontend only)*
+
+### 💊 Pharmacist Portal
+
+- **Medicine Inventory** - Complete medicine catalog management *(UI only)*
+- **Stock Management** - Track medicine quantities and availability *(UI only)*
+- **Order Processing** - Process prescription orders *(Not functional in demo)*
+- **Sales Analytics** - Revenue and sales statistics *(Frontend only)*
+- **Medicine Categories** - Organize by type, category, prescription requirement *(UI only)*
+- **Order Fulfillment** - Manage order status and delivery *(Not functional in demo)*
+- **Dashboard** - Monitor inventory and sales *(Frontend only)*
+
+---
+
+## 🛠️ Technology Stack
+
+### Backend Technologies
+```
+- Python 3.8+
+- Django 4.0+ (Web Framework)
+- Django REST Framework (API)
+- SQLite (Development Database)
+- PostgreSQL (Production - Full Version)
+```
+
+### Frontend Technologies
+```
+- HTML5 (Semantic Markup)
+- CSS3 (Styling & Animations)
+- JavaScript ES6+ (Interactivity)
+- Bootstrap 5 (Responsive Framework)
+- jQuery (DOM Manipulation)
+- AJAX (Asynchronous Operations)
+```
+
+### Integrations & Libraries
+```
+- SSLCommerz (Payment Gateway)
+- xhtml2pdf (PDF Generation)
+- SMTP (Email Service)
+- Chart.js (Data Visualization)
+- Select2 (Enhanced Dropdowns)
+- DataTables (Table Management)
+- Django Channels (WebSocket - Full Version)
+```
+
+### Security & Privacy
+```
+- CSRF Protection
+- SQL Injection Prevention
+- XSS Protection
+- Password Hashing (PBKDF2)
+- Session Security
+- File Upload Validation
+- Role-based Access Control
+```
+
+---
+
+## 🏗️ System Architecture
+
+### Project Structure
+```
+CarePoint-Health-Management-System/
+├── doctor/                      # Doctor Module
+│   ├── models.py               # Doctor, Appointment, Prescription models
+│   ├── views.py                # Doctor dashboard, patient management
+│   ├── forms.py                # Doctor registration, profile forms
+│   ├── urls.py                 # Doctor URL routing
+│   └── migrations/             # Database migrations
+├── hospital/                    # Patient & Hospital Module
+│   ├── models.py               # Patient, Hospital, User models
+│   ├── views.py                # Patient dashboard, booking system
+│   ├── forms.py                # Patient registration, profile forms
+│   ├── urls.py                 # Patient URL routing
+│   └── migrations/             # Database migrations
+├── hospital_admin/              # Admin Module
+│   ├── models.py               # Admin, Lab Worker, Test models
+│   ├── views.py                # Admin dashboard, management
+│   ├── forms.py                # Admin forms
+│   ├── urls.py                 # Admin URL routing
+│   └── migrations/             # Database migrations
+├── pharmacy/                    # Pharmacy Module
+│   ├── models.py               # Medicine, Cart, Order models
+│   ├── views.py                # Pharmacy shop, inventory
+│   ├── forms.py                # Medicine forms
+│   ├── urls.py                 # Pharmacy URL routing
+│   └── migrations/             # Database migrations
+├── sslcommerz/                  # Payment Gateway Module
+│   ├── models.py               # Payment transaction models
+│   ├── views.py                # Payment processing
+│   ├── urls.py                 # Payment URL routing
+│   └── migrations/             # Database migrations
+├── api/                         # REST API Module
+│   ├── views.py                # API endpoints
+│   ├── serializers.py          # Data serializers
+│   └── urls.py                 # API URL routing
+├── ChatApp/                     # Real-time Chat Module
+│   ├── models.py               # Chat models
+│   ├── views.py                # Chat functionality
+│   └── urls.py                 # Chat URL routing
+├── templates/                   # HTML Templates
+│   ├── doctor/                 # Doctor templates
+│   ├── hospital_admin/         # Admin templates
+│   ├── Pharmacy/               # Pharmacy templates
+│   └── *.html                  # Common templates
+├── static/                      # Static Files
+│   ├── css/                    # Stylesheets
+│   ├── js/                     # JavaScript files
+│   └── images/                 # Images
+├── media/                       # User Uploads
+│   ├── doctors/                # Doctor images
+│   ├── patients/               # Patient images
+│   └── medicines/              # Medicine images
+├── screenshots/                 # Project Screenshots
+├── healthstack/                 # Project Configuration
+│   ├── settings.py             # Django settings
+│   ├── urls.py                 # Main URL configuration
+│   └── wsgi.py                 # WSGI configuration
+├── manage.py                    # Django management script
+├── requirements.txt             # Python dependencies
+└── README.md                    # Project documentation
+```
+
+---
+
+## 📦 Installation
+
+### Prerequisites
+
+**Required Software:**
+- Python 3.8 or higher ([Download](https://www.python.org/downloads/))
+- pip (Python package manager)
+- Git ([Download](https://git-scm.com/))
+- Modern web browser (Chrome, Firefox, Safari)
+
+### Step-by-Step Installation
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/bimaljayakumar/CarePoint-Health-Management-System.git
+cd CarePoint-Health-Management-System
+```
+
+#### 2. Create Virtual Environment
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+```
+
+#### 3. Install Dependencies
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+#### 4. Database Setup
+```bash
+# Create migrations
+python manage.py makemigrations
+
+# Apply migrations
+python manage.py migrate
+
+# Create superuser
+python manage.py createsuperuser
+```
+
+#### 5. Run Development Server
+```bash
+python manage.py runserver
+```
+
+#### 6. Access Application
+- **Main Site:** http://127.0.0.1:8000
+- **Admin Panel:** http://127.0.0.1:8000/admin
+
+---
+
+## ⚙️ Configuration
+
+### Django Settings
+
+**settings.py Configuration:**
+
+```python
+# Security
+SECRET_KEY = 'your-secret-key'
+DEBUG = True  # Set to False in production
+ALLOWED_HOSTS = ['*']
+
+# Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# Email Configuration (Full Version)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# Payment Gateway (Full Version)
+STORE_ID = 'your-store-id'
+STORE_PASSWORD = 'your-store-password'
+
+# Static Files
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+```
 
 ---
 
 ## 📸 Screenshots
 
 ### 🏠 Home & Authentication
+
+<div align="center">
+
+#### Home Page
+![Home Page](screenshots/127.0.0.1_8000_(HD).png)
+
+</div>
+
 <table>
   <tr>
-    <td><img src="screenshots/127.0.0.1_8000_(HD).png" alt="Home Page" width="400"/><br/><b>Home Page</b></td>
     <td><img src="screenshots/127.0.0.1_8000_login_(HD).png" alt="Login" width="400"/><br/><b>Login System</b></td>
-  </tr>
-  <tr>
     <td><img src="screenshots/127.0.0.1_8000_about-us_(HD).png" alt="About Us" width="400"/><br/><b>About Us</b></td>
-    <td><img src="screenshots/127.0.0.1_8000_search_(HD).png" alt="Search" width="400"/><br/><b>Doctor Search</b></td>
   </tr>
 </table>
 
 ### 👤 Patient Portal
+
 <table>
   <tr>
     <td><img src="screenshots/127.0.0.1_8000_patient-dashboard_(HD).png" alt="Patient Dashboard" width="400"/><br/><b>Patient Dashboard</b></td>
-    <td><img src="screenshots/127.0.0.1_8000_profile-settings_(HD).png" alt="Profile Settings" width="400"/><br/><b>Profile Settings</b></td>
+    <td><img src="screenshots/127.0.0.1_8000_search_(HD).png" alt="Doctor Search" width="400"/><br/><b>Doctor Search & Filter</b></td>
   </tr>
   <tr>
     <td><img src="screenshots/127.0.0.1_8000_multiple-hospital_(HD).png" alt="Hospitals" width="400"/><br/><b>Hospital Listing</b></td>
     <td><img src="screenshots/127.0.0.1_8000_pharmacy_shop_(HD).png" alt="Pharmacy" width="400"/><br/><b>Online Pharmacy</b></td>
   </tr>
+  <tr>
+    <td><img src="screenshots/127.0.0.1_8000_profile-settings_(HD).png" alt="Profile" width="400"/><br/><b>Profile Settings</b></td>
+    <td><img src="screenshots/127.0.0.1_8000_change-password_45(HD).png" alt="Change Password" width="400"/><br/><b>Change Password</b></td>
+  </tr>
 </table>
 
-### 👨‍⚕️ Doctor Portal
+### 👨⚕️ Doctor Portal
+
 <table>
   <tr>
     <td><img src="screenshots/127.0.0.1_8000_doctor_doctor-dashboard_(HD).png" alt="Doctor Dashboard" width="400"/><br/><b>Doctor Dashboard</b></td>
@@ -121,7 +378,8 @@
   </tr>
 </table>
 
-### 🏢 Admin Portal
+### 🏢 Hospital Admin Portal
+
 <table>
   <tr>
     <td><img src="screenshots/127.0.0.1_8000_hospital_admin_admin-dashboard_(HD).png" alt="Admin Dashboard" width="400"/><br/><b>Admin Dashboard</b></td>
@@ -131,143 +389,124 @@
     <td><img src="screenshots/127.0.0.1_8000_hospital_admin_add-medicine_(HD).png" alt="Add Medicine" width="400"/><br/><b>Add Medicine</b></td>
     <td><img src="screenshots/127.0.0.1_8000_hospital_admin_test-list_(HD).png" alt="Test List" width="400"/><br/><b>Lab Test Management</b></td>
   </tr>
+  <tr>
+    <td><img src="screenshots/127.0.0.1_8000_hospital_admin_(HD).png" alt="Admin Login" width="400"/><br/><b>Admin Login</b></td>
+    <td><img src="screenshots/127.0.0.1_8000_hospital_admin_mypatient-list_(HD).png" alt="Patient List" width="400"/><br/><b>Patient List</b></td>
+  </tr>
 </table>
 
 ### 🔬 Lab Worker & 💊 Pharmacist Portals
+
 <table>
   <tr>
     <td><img src="screenshots/127.0.0.1_8000_hospital_admin_labworker-dashboard_(HD).png" alt="Lab Dashboard" width="400"/><br/><b>Lab Worker Dashboard</b></td>
     <td><img src="screenshots/127.0.0.1_8000_hospital_admin_pharmacist-dashboard_(HD).png" alt="Pharmacist Dashboard" width="400"/><br/><b>Pharmacist Dashboard</b></td>
   </tr>
-  <tr>
-    <td><img src="screenshots/127.0.0.1_8000_hospital_admin_mypatient-list_(HD).png" alt="Patient List" width="400"/><br/><b>Patient List</b></td>
-    <td><img src="screenshots/GooglePay_QR.png" alt="Payment" width="400"/><br/><b>Payment Integration</b></td>
-  </tr>
 </table>
 
----
+### 💳 Payment Integration
 
-## 🛠️ Technology Stack
+<div align="center">
 
-### Backend
-- **Framework**: Django 4.0+
-- **Database**: SQLite (Dev) / PostgreSQL (Production)
-- **API**: Django REST Framework
-- **Authentication**: Django Auth + Custom Middleware
+![Payment Gateway](screenshots/GooglePay_QR.png)
 
-### Frontend
-- **HTML5, CSS3, JavaScript**
-- **Bootstrap 5** - Responsive UI
-- **jQuery** - DOM Manipulation
-- **AJAX** - Asynchronous Operations
+**Payment Gateway Integration**
 
-### Integrations
-- **Payment**: SSLCommerz Gateway
-- **Email**: SMTP (Gmail/Custom)
-- **PDF**: xhtml2pdf
-- **Chat**: Django Channels (WebSocket)
+</div>
 
 ---
 
-## 📂 Project Structure
+## ⚠️ Demo Limitations
 
-```
-CarePoint-Health-Management-System/
-├── 📁 doctor/              # Doctor module
-├── 📁 hospital/            # Patient & Hospital module
-├── 📁 hospital_admin/      # Admin module
-├── 📁 pharmacy/            # Pharmacy module
-├── 📁 sslcommerz/          # Payment gateway
-├── 📁 api/                 # REST API
-├── 📁 ChatApp/             # Real-time chat
-├── 📁 templates/           # HTML templates
-├── 📁 static/              # CSS, JS, Images
-├── 📁 media/               # User uploads
-├── 📁 screenshots/         # System screenshots
-└── 📄 manage.py            # Django management
-```
+### Removed Features (Demo Version)
 
----
+❌ **Backend Features:**
+- Authentication and login system
+- Appointment booking algorithms
+- Prescription creation logic
+- Payment gateway integration (SSLCommerz)
+- Report generation and PDF export
+- Email notification system
+- SMS integration
+- Real-time chat functionality
+- Database operations for critical features
 
-## 🚫 What's Removed in Demo
+❌ **Security Features:**
+- Production-grade encryption
+- Advanced authentication
+- Rate limiting
+- Session management logic
 
-This demo version has the following removed:
+❌ **Integration Features:**
+- Payment processing
+- Email delivery
+- SMS alerts
+- Third-party APIs
 
-- ❌ **Authentication Logic** - Login/Registration workflows
-- ❌ **Appointment System** - Booking algorithms
-- ❌ **Prescription Engine** - Creation & validation
-- ❌ **Payment Processing** - Gateway integration
-- ❌ **Report Generation** - PDF creation logic
-- ❌ **Email System** - Notification triggers
-- ❌ **Database Config** - Connection settings
-- ❌ **API Endpoints** - REST API logic
-- ❌ **Search Algorithms** - Filter & search
-- ❌ **Business Validations** - All rules
+### Available Features (Demo Version)
 
----
+✅ **Frontend Features:**
+- Complete UI/UX design
+- Responsive layouts
+- Interactive dashboards
+- Form interfaces
+- Navigation systems
+- Static content display
 
-## 💼 Purchase Full Version
-
-### 📦 What You Get
-
-✅ **Complete Source Code** - All business logic included  
-✅ **Database Schema** - Full migrations & models  
-✅ **Configuration Files** - .env, settings, deployment  
-✅ **Documentation** - Setup, API, user guides  
-✅ **Technical Support** - Email support for 30 days  
-✅ **Free Updates** - Bug fixes for 6 months  
-
-### 💰 Pricing
-
-Contact for custom pricing based on your requirements.
-
-### 📧 Contact Information
-
-**Developer**: Bimal Jayakumar  
-**Email**: bimaljayakumar18@gmail.com
-
-**When contacting, include:**
-- Your name & organization
-- Intended use case
-- Deployment requirements
-- Timeline
+✅ **Basic Backend:**
+- Database models structure
+- URL routing
+- Template rendering
+- Static file serving
 
 ---
 
-## 🔒 Security Features
+## 🎯 Full Version Features
 
-- ✅ CSRF Protection
-- ✅ SQL Injection Prevention
-- ✅ XSS Protection
-- ✅ Secure Password Hashing (PBKDF2)
-- ✅ Session Security
-- ✅ File Upload Validation
-- ✅ Role-based Access Control
+### Complete Backend Implementation
+- ✅ Fully functional authentication system
+- ✅ Complete appointment management
+- ✅ Prescription creation and management
+- ✅ Payment gateway integration (SSLCommerz)
+- ✅ PDF generation for prescriptions and reports
+- ✅ Email notification system
+- ✅ SMS alert integration
+- ✅ Real-time chat with WebSocket
+- ✅ Advanced search and filtering
 
----
+### Production-Ready Features
+- ✅ PostgreSQL database
+- ✅ Redis caching
+- ✅ Celery task queue
+- ✅ AWS S3 storage
+- ✅ CDN integration
+- ✅ Load balancing
+- ✅ Auto-scaling
 
-## 📊 System Capabilities
+### Security Enhancements
+- ✅ SSL/TLS certificates
+- ✅ Advanced encryption
+- ✅ Rate limiting
+- ✅ DDoS protection
+- ✅ Security auditing
+- ✅ HIPAA compliance features
 
-| Feature | Patients | Doctors | Admins | Lab Workers | Pharmacists |
-|---------|----------|---------|--------|-------------|-------------|
-| Dashboard | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Appointments | ✅ | ✅ | ✅ | ❌ | ❌ |
-| Prescriptions | ✅ | ✅ | ✅ | ❌ | ✅ |
-| Reports | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Pharmacy | ✅ | ❌ | ✅ | ❌ | ✅ |
-| Analytics | ❌ | ✅ | ✅ | ✅ | ✅ |
-| User Management | ❌ | ❌ | ✅ | ❌ | ❌ |
+### Additional Features
+- ✅ Multi-language support
+- ✅ Mobile app integration
+- ✅ Voice commands
+- ✅ Telemedicine features
+- ✅ Insurance integration
+- ✅ Analytics dashboard
+- ✅ Reporting system
 
----
-
-## 🌐 Browser Support
-
-| Browser | Version |
-|---------|---------|
-| Chrome | Latest ✅ |
-| Firefox | Latest ✅ |
-| Safari | Latest ✅ |
-| Edge | Latest ✅ |
+### Documentation
+- ✅ Complete API documentation
+- ✅ Deployment guides
+- ✅ User manuals
+- ✅ Admin guides
+- ✅ Video tutorials
+- ✅ Technical support
 
 ---
 
@@ -277,25 +516,79 @@ Contact for custom pricing based on your requirements.
 
 © 2024 Bimal Jayakumar. All Rights Reserved.
 
-This demo version is provided for evaluation purposes only.  
-Unauthorized copying, distribution, or commercial use is strictly prohibited.
+This is a demonstration version with restricted usage:
+- ❌ No commercial use
+- ❌ No redistribution
+- ❌ No modification
+- ✅ Evaluation purposes only
 
 ---
 
-## 📞 Get in Touch
+## 📞 Contact
+
+### Developer Information
+
+**Bimal Jayakumar**
+
+📧 **Email:** bimaljayakumar18@gmail.com  
+🐙 **GitHub:** [@bimaljayakumar](https://github.com/bimaljayakumar)  
+💼 **LinkedIn:** [Connect with me](https://linkedin.com/in/bimaljayakumar)
+
+### Purchase Full Version
+
+Interested in the complete working project?
+
+**What You Get:**
+- ✅ Complete source code with all features
+- ✅ Full backend implementation
+- ✅ Production-ready deployment
+- ✅ Complete documentation
+- ✅ Technical support (30 days)
+- ✅ Future updates (6 months)
+- ✅ Customization options
+- ✅ Deployment assistance
+
+**Payment Methods:**
 
 <div align="center">
 
-### Ready to Transform Your Healthcare Operations?
+![Google Pay](screenshots/GooglePay_QR.png)
 
-**Contact for the Complete System**
+*Scan to pay via Google Pay/UPI*
 
-📧 **bimaljayakumar18@gmail.com**
+</div>
+
+**Contact:** bimaljayakumar18@gmail.com
 
 ---
 
-*Built with ❤️ using Django & Modern Web Technologies*
+## 🙏 Acknowledgments
 
-**Bimal Jayakumar** | Healthcare Software Solutions
+- Django Framework Team
+- Python Community
+- Open Source Contributors
+- Healthcare Technology Advocates
+
+---
+
+## 📊 Project Stats
+
+- **Lines of Code:** 20,000+
+- **Files:** 671
+- **Apps:** 7
+- **Models:** 25+
+- **Views:** 80+
+- **Templates:** 100+
+- **Screenshots:** 25
+
+---
+
+<div align="center">
+
+**Made with 💙 for healthcare digitization and patient care**
+
+© 2024 Bimal Jayakumar. All Rights Reserved.
+
+[⬆ Back to Top](#-carepoint-health-management-system-demo-version)
 
 </div>
